@@ -1,0 +1,609 @@
+/* ============================================
+   MATH BATTLE ARENA - СКЕЛЕТЕН CSS ФАЙЛ
+   ============================================
+   
+   Този файл съдържа основната структура.
+   Вашата задача е да попълните липсващите стилове
+   според инструкциите за всяка седмица.
+*/
+
+/* ============================================
+   СЕДМИЦА 3: CSS ПРОМЕНЛИВИ
+   ============================================
+   Инструкции:
+   1. Вече има готови променливи в :root
+   2. Прегледайте ги и разберете какво правят
+   3. Можете да промените цветовете по ваш избор
+*/
+
+:root {
+    /* Цветови градиенти */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+    
+    /* Основни цветове */
+    --bg-color: #0f0f23;
+    --card-bg: #1a1a2e;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b8;
+    --accent-color: #667eea;
+    
+    /* Сенки */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.4);
+    
+    /* Размери */
+    --border-radius: 20px;
+    --border-radius-sm: 12px;
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+}
+
+/* ============================================
+   СЕДМИЦА 3: TODO - ГЛОБАЛНИ СТИЛОВЕ
+   ============================================
+   Инструкции:
+   1. Задайте на всички елементи (*):
+      - margin: 0
+      - padding: 0
+      - box-sizing: border-box
+*/
+
+/* TODO: Добавете глобални стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - BODY СТИЛОВЕ
+   ============================================
+   Инструкции за body:
+   1. font-family: 'Poppins', -apple-system, sans-serif
+   2. background: var(--bg-color)
+   3. color: var(--text-primary)
+   4. min-height: 100vh
+   5. display: flex
+   6. justify-content: center
+   7. align-items: center
+   8. padding: var(--spacing-sm)
+   9. overflow-x: hidden
+*/
+
+/* TODO: Добавете body стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 10: TODO - АНИМИРАН ФОН
+   ============================================
+   Инструкции за .background-animation:
+   1. position: fixed
+   2. top, left: 0
+   3. width, height: 100%
+   4. z-index: -1
+   5. background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%)
+   6. background-size: 400% 400%
+   7. animation: gradientShift 15s ease infinite
+   8. opacity: 0.1
+   
+   Инструкции за @keyframes gradientShift:
+   0% { background-position: 0% 50%; }
+   50% { background-position: 100% 50%; }
+   100% { background-position: 0% 50%; }
+*/
+
+/* TODO: Добавете .background-animation стилове тук */
+
+
+
+
+/* TODO: Добавете @keyframes gradientShift тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - GAME CONTAINER
+   ============================================
+   Инструкции за .game-container:
+   1. background: var(--card-bg)
+   2. border-radius: var(--border-radius)
+   3. padding: var(--spacing-lg)
+   4. box-shadow: var(--shadow-lg)
+   5. max-width: 700px
+   6. width: 100%
+   7. position: relative
+   8. border: 1px solid rgba(255, 255, 255, 0.1)
+   9. backdrop-filter: blur(10px)
+*/
+
+/* TODO: Добавете .game-container стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - HEADER И ЛОГО
+   ============================================
+*/
+
+/* Инструкции за .game-header:
+   - text-align: center
+   - margin-bottom: var(--spacing-lg)
+*/
+
+/* TODO: Добавете .game-header стилове тук */
+
+
+
+/* Инструкции за .logo-container:
+   - display: flex
+   - align-items: center
+   - justify-content: center
+   - gap: var(--spacing-sm)
+   - margin-bottom: var(--spacing-md)
+*/
+
+/* TODO: Добавете .logo-container стилове тук */
+
+
+
+/* Инструкции за .logo-icon:
+   - font-size: 3rem
+   - animation: pulse 2s ease-in-out infinite
+*/
+
+/* TODO: Добавете .logo-icon стилове тук */
+
+
+
+/* СЕДМИЦА 10: TODO - Pulse анимация
+   @keyframes pulse:
+   0%, 100% { transform: scale(1); }
+   50% { transform: scale(1.1); }
+*/
+
+/* TODO: Добавете @keyframes pulse тук */
+
+
+
+/* Инструкции за .game-title:
+   - font-size: clamp(1.8rem, 5vw, 2.5rem)
+   - font-weight: 700
+   - background: var(--primary-gradient)
+   - -webkit-background-clip: text
+   - -webkit-text-fill-color: transparent
+   - background-clip: text
+*/
+
+/* TODO: Добавете .game-title стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - СТАТИСТИКИ БАР
+   ============================================
+*/
+
+/* Инструкции за .stats-bar:
+   - display: grid
+   - grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+   - gap: var(--spacing-sm)
+   - margin-top: var(--spacing-md)
+*/
+
+/* TODO: Добавете .stats-bar стилове тук */
+
+
+
+/* Инструкции за .stat-card:
+   - background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)
+   - border: 1px solid rgba(102, 126, 234, 0.3)
+   - border-radius: var(--border-radius-sm)
+   - padding: var(--spacing-sm)
+   - display: flex
+   - align-items: center
+   - gap: var(--spacing-sm)
+   - transition: all 0.3s ease
+*/
+
+/* TODO: Добавете .stat-card стилове тук */
+
+
+
+/* СЕДМИЦА 10: TODO - Hover ефект за .stat-card
+   .stat-card:hover:
+   - transform: translateY(-3px)
+   - box-shadow: var(--shadow-glow)
+   - border-color: var(--accent-color)
+*/
+
+/* TODO: Добавете .stat-card:hover стилове тук */
+
+
+
+/* Инструкции за .stat-icon:
+   - font-size: 2rem
+*/
+
+/* TODO: Добавете .stat-icon стилове тук */
+
+
+
+/* Инструкции за .stat-content:
+   - display: flex
+   - flex-direction: column
+   - align-items: flex-start
+*/
+
+/* TODO: Добавете .stat-content стилове тук */
+
+
+
+/* Инструкции за .stat-label:
+   - font-size: 0.75rem
+   - color: var(--text-secondary)
+   - text-transform: uppercase
+   - letter-spacing: 1px
+   - font-weight: 600
+*/
+
+/* TODO: Добавете .stat-label стилове тук */
+
+
+
+/* Инструкции за .stat-value:
+   - font-size: 1.5rem
+   - font-weight: 700
+   - color: var(--text-primary)
+*/
+
+/* TODO: Добавете .stat-value стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - ВЪПРОСНА КАРТА
+   ============================================
+*/
+
+/* Инструкции за .question-card:
+   - background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%)
+   - border: 2px solid rgba(102, 126, 234, 0.3)
+   - border-radius: var(--border-radius)
+   - padding: var(--spacing-lg)
+   - margin-bottom: var(--spacing-md)
+   - box-shadow: var(--shadow-md)
+*/
+
+/* TODO: Добавете .question-card стилове тук */
+
+
+
+/* Инструкции за .question-text:
+   - font-size: clamp(2rem, 6vw, 3.5rem)
+   - font-weight: 700
+   - text-align: center
+   - color: var(--text-primary)
+   - letter-spacing: 2px
+*/
+
+/* TODO: Добавете .question-text стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - ОТГОВОРНА СЕКЦИЯ
+   ============================================
+*/
+
+/* Инструкции за .answer-section:
+   - margin-bottom: var(--spacing-md)
+*/
+
+/* TODO: Добавете .answer-section стилове тук */
+
+
+
+/* Инструкции за .input-wrapper:
+   - display: flex
+   - gap: var(--spacing-sm)
+*/
+
+/* TODO: Добавете .input-wrapper стилове тук */
+
+
+
+/* Инструкции за .answer-input:
+   - flex: 1
+   - padding: var(--spacing-sm) var(--spacing-md)
+   - font-size: 1.5rem
+   - font-weight: 600
+   - text-align: center
+   - background: rgba(255, 255, 255, 0.05)
+   - border: 2px solid rgba(102, 126, 234, 0.3)
+   - border-radius: var(--border-radius-sm)
+   - color: var(--text-primary)
+   - outline: none
+   - transition: all 0.3s ease
+*/
+
+/* TODO: Добавете .answer-input стилове тук */
+
+
+
+/* СЕДМИЦА 10: TODO - Focus ефект за .answer-input
+   .answer-input:focus:
+   - border-color: var(--accent-color)
+   - box-shadow: 0 0 20px rgba(102, 126, 234, 0.4)
+   - transform: scale(1.02)
+*/
+
+/* TODO: Добавете .answer-input:focus стилове тук */
+
+
+
+/* Инструкции за .answer-input:disabled:
+   - opacity: 0.5
+   - cursor: not-allowed
+*/
+
+/* TODO: Добавете .answer-input:disabled стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - БУТОНИ
+   ============================================
+*/
+
+/* Инструкции за .submit-btn:
+   - padding: var(--spacing-sm) var(--spacing-md)
+   - background: var(--primary-gradient)
+   - border: none
+   - border-radius: var(--border-radius-sm)
+   - color: white
+   - font-size: 1rem
+   - font-weight: 600
+   - cursor: pointer
+   - display: flex
+   - align-items: center
+   - gap: var(--spacing-xs)
+   - transition: all 0.3s ease
+   - min-width: 140px
+   - justify-content: center
+*/
+
+/* TODO: Добавете .submit-btn стилове тук */
+
+
+
+/* СЕДМИЦА 10: TODO - Hover ефект за .submit-btn
+   .submit-btn:hover:not(:disabled):
+   - transform: translateY(-3px)
+   - box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6)
+*/
+
+/* TODO: Добавете .submit-btn:hover стилове тук */
+
+
+
+/* Инструкции за .submit-btn:disabled:
+   - opacity: 0.5
+   - cursor: not-allowed
+*/
+
+/* TODO: Добавете .submit-btn:disabled стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 10: TODO - FEEDBACK ЗОНА
+   ============================================
+*/
+
+/* Инструкции за .feedback-zone:
+   - min-height: 60px
+   - display: flex
+   - align-items: center
+   - justify-content: center
+   - font-size: 1.3rem
+   - font-weight: 600
+   - margin-bottom: var(--spacing-md)
+   - border-radius: var(--border-radius-sm)
+   - padding: var(--spacing-sm)
+*/
+
+/* TODO: Добавете .feedback-zone стилове тук */
+
+
+
+/* Инструкции за .correct-feedback:
+   - color: #38ef7d
+   - background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%)
+   - animation: celebrateCorrect 0.6s ease
+*/
+
+/* TODO: Добавете .correct-feedback стилове тук */
+
+
+
+/* Инструкции за .wrong-feedback:
+   - color: #f5576c
+   - background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%)
+   - animation: shakeWrong 0.6s ease
+*/
+
+/* TODO: Добавете .wrong-feedback стилове тук */
+
+
+
+/* TODO: Добавете @keyframes celebrateCorrect
+   0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+   50% { transform: scale(1.2) rotate(5deg); }
+   100% { transform: scale(1) rotate(0deg); opacity: 1; }
+*/
+
+
+
+/* TODO: Добавете @keyframes shakeWrong
+   0%, 100% { transform: translateX(0); }
+   10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+   20%, 40%, 60%, 80% { transform: translateX(10px); }
+*/
+
+
+
+
+/* ============================================
+   СЕДМИЦА 3: TODO - КОНТРОЛНИ БУТОНИ
+   ============================================
+*/
+
+/* Инструкции за .controls-section:
+   - display: flex
+   - gap: var(--spacing-sm)
+   - justify-content: center
+   - flex-wrap: wrap
+*/
+
+/* TODO: Добавете .controls-section стилове тук */
+
+
+
+/* Инструкции за .control-btn:
+   - padding: var(--spacing-sm) var(--spacing-md)
+   - border: none
+   - border-radius: var(--border-radius-sm)
+   - font-size: 1rem
+   - font-weight: 600
+   - cursor: pointer
+   - display: flex
+   - align-items: center
+   - gap: var(--spacing-xs)
+   - transition: all 0.3s ease
+   - min-width: 140px
+   - justify-content: center
+*/
+
+/* TODO: Добавете .control-btn стилове тук */
+
+
+
+/* Инструкции за .start-btn:
+   - background: var(--success-gradient)
+   - color: white
+*/
+
+/* TODO: Добавете .start-btn стилове тук */
+
+
+
+/* Инструкции за .pause-btn:
+   - background: var(--warning-gradient)
+   - color: white
+*/
+
+/* TODO: Добавете .pause-btn стилове тук */
+
+
+
+/* Инструкции за .new-btn:
+   - background: var(--primary-gradient)
+   - color: white
+*/
+
+/* TODO: Добавете .new-btn стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 11: TODO - СТАТИСТИКИ СЕКЦИЯ
+   ============================================
+*/
+
+/* Инструкции за .stats-section:
+   - margin-top: var(--spacing-lg)
+   - padding: var(--spacing-md)
+   - background: rgba(102, 126, 234, 0.1)
+   - border-radius: var(--border-radius)
+   - border: 1px solid rgba(102, 126, 234, 0.3)
+*/
+
+/* TODO: Добавете .stats-section стилове тук */
+
+
+
+/* Инструкции за .hidden:
+   - display: none
+*/
+
+/* TODO: Добавете .hidden стилове тук */
+
+
+
+/* Инструкции за .stats-grid:
+   - display: grid
+   - grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+   - gap: var(--spacing-sm)
+   - margin-top: var(--spacing-md)
+*/
+
+/* TODO: Добавете .stats-grid стилове тук */
+
+
+
+/* Инструкции за .result-card:
+   - background: rgba(255, 255, 255, 0.05)
+   - padding: var(--spacing-md)
+   - border-radius: var(--border-radius-sm)
+   - text-align: center
+   - border: 1px solid rgba(255, 255, 255, 0.1)
+*/
+
+/* TODO: Добавете .result-card стилове тук */
+
+
+
+/* Инструкции за .result-card.gold:
+   - background: var(--gold-gradient)
+   - border-color: #ffd200
+*/
+
+/* TODO: Добавете .result-card.gold стилове тук */
+
+
+
+
+/* ============================================
+   СЕДМИЦА 10: TODO - RESPONSIVE ДИЗАЙН
+   ============================================
+*/
+
+/* Инструкции за @media (max-width: 768px):
+   
+   .game-container:
+   - padding: var(--spacing-md)
+   
+   .question-text:
+   - font-size: clamp(1.5rem, 5vw, 2rem)
+   
+   .stat-card:
+   - flex-direction: column
+   - text-align: center
+*/
+
+/* TODO: Добавете media query тук */

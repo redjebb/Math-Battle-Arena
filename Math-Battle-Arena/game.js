@@ -61,7 +61,10 @@ console.log("✅ Променливите са създадени!");
 */
 
 // TODO: Създайте константите тук
-
+const GAME_DURATION = 60
+const POINTS_PER_CORRECT = 10
+const QUESTIONS_FOR_LEVEL_UP = 5
+const MAX_LEVEL = 10
 
 
 

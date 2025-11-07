@@ -8,129 +8,91 @@
      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Фонови анимирани градиенти -->
-    <div class="background-animation"></div>
-    
-    <!--- Основен контейнер --->
-    <div class="game-container">
-        
-        <!-- 
-        ============================================
-        СЕДМИЦА 2: TODO - HEADER СЕКЦИЯ
-        ============================================
-        Инструкции:
-        1. Създайте <header> с клас "game-header"
-        2. Вътре създайте div с клас "logo-container"
-        3. В logo-container добавете:
-           - div с клас "logo-icon" и емоджи 🎯
-           - h1 с клас "game-title" и текст "Math Battle Arena"
-        -->
-        
-        <!-- TODO: Добавете header тук -->
-        
-        
-        
-        <!-- 
-        ============================================
-        СЕДМИЦА 2: TODO - СТАТИСТИКИ БАР
-        ============================================
-        Инструкции:
-        1. Създайте div с клас "stats-bar"
-        2. Вътре създайте 3 div-а с клас "stat-card"
-        3. Всяка stat-card трябва да съдържа:
-           - div с клас "stat-icon" (емоджи: ⭐, ⏱️, 🚀)
-           - div с клас "stat-content"
-           - В stat-content:
-             * span с клас "stat-label" (Точки, Време, Ниво)
-             * span с клас "stat-value" и съответно id:
-               - id="score-display" (стойност: 0)
-               - id="timer-display" (стойност: 60s)
-               - id="level-display" (стойност: 1)
-        -->
-        
-        <!-- TODO: Добавете stats-bar тук -->
-        
 
-        <!-- 
-        ============================================
-        СЕДМИЦА 2: TODO - ГЛАВНА ИГРАЛНА ЗОНА
-        ============================================
-        -->
+    <div class="background-animation"></div>
+
+    <div class="game-container">
+         <header class="game-header">
+  <div class="logo-container">
+    <div class="logo-icon">🎯</div>
+    <h1 class="game-title">Math Battle Arena</h1>
+  </div>
+</header>
+       <div class="stats-bar">
+  <div class="stat-card">
+    <div class="stat-icon">⭐</div>
+    <div class="stat-content">
+      <span class="stat-label">Точки</span>
+      <span class="stat-value" id="score-display">0</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">⏱️</div>
+    <div class="stat-content">
+      <span class="stat-label">Време</span>
+      <span class="stat-value" id="timer-display">60s</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">🚀</div>
+    <div class="stat-content">
+      <span class="stat-label">Ниво</span>
+      <span class="stat-value" id="level-display">1</span>
+    </div>
+  </div>
+</div>
+  
         <main class="game-main">
             
-            <!-- 
-            Инструкции за въпросна карта:
-            1. Създайте div с клас "question-card"
-            2. Вътре създайте div с клас "question-badge" и текст "Математическо предизвикателство"
-            3. Създайте div с клас "question-content"
-            4. В question-content създайте div с:
-               - id="question-display"
-               - клас="question-text"
-               - текст: "Натисни 'Старт' за да започнеш! 🎮"
-            -->
-            
-            <!-- TODO: Добавете question-card тук -->
-            
+            <div class="question-card">
+  <div class="question-badge">Математическо предизвикателство</div>
+  <div class="question-content">
+    <div id="question-display" class="question-text">
+      Натисни 'Старт' за да започнеш! 🎮
+    </div>
+  </div>
+</div>
 
-            <!-- 
-            ============================================
-            СЕДМИЦА 2: TODO - СЕКЦИЯ ЗА ОТГОВОР
-            ============================================
-            Инструкции:
-            1. Създайте div с клас "answer-section"
-            2. Вътре създайте div с клас "input-wrapper"
-            3. В input-wrapper създайте:
-               - input с:
-                 * type="number"
-                 * id="answer-input"
-                 * class="answer-input"
-                 * placeholder="Твоят отговор..."
-                 * disabled
-               - button с:
-                 * id="submit-answer"
-                 * class="submit-btn"
-                 * disabled
-                 * Вътре: 2 span-а:
-                   - span class="btn-icon" текст: ✓
-                   - span class="btn-text" текст: Провери
-            -->
-            
-            <!-- TODO: Добавете answer-section тук -->
-            
+            <div class="answer-section">
+  <div class="input-wrapper">
+    <input 
+      type="number" 
+      id="answer-input" 
+      class="answer-input" 
+      placeholder="Твоят отговор..." 
+      disabled
+    >
+    <button 
+      id="submit-answer" 
+      class="submit-btn" 
+      disabled
+    >
+      <span class="btn-icon">✓</span>
+      <span class="btn-text">Провери</span>
+    </button>
+  </div>
+</div>
+          <div class="controls-section">
+  <button id="start-game" class="control-btn start-btn">
+    <span class="btn-icon">🚀</span>
+    <span class="btn-text">Старт</span>
+  </button>
 
-            <!-- Feedback зона с анимации -->
-            <div id="feedback-display" class="feedback-zone"></div>
+  <button id="pause-game" class="control-btn pause-btn" disabled>
+    <span class="btn-icon">⏸️</span>
+    <span class="btn-text">Пауза</span>
+  </button>
 
-            <!-- 
-            ============================================
-            СЕДМИЦА 2: TODO - КОНТРОЛНИ БУТОНИ
-            ============================================
-            Инструкции:
-            1. Създайте div с клас "controls-section"
-            2. Вътре създайте 3 button-а:
-            
-            СТАРТ БУТОН:
-            - id="start-game"
-            - class="control-btn start-btn"
-            - 2 span-а: btn-icon (🚀) и btn-text (Старт)
-            
-            ПАУЗА БУТОН:
-            - id="pause-game"
-            - class="control-btn pause-btn"
-            - disabled
-            - 2 span-а: btn-icon (⏸️) и btn-text (Пауза)
-            
-            НОВА ИГРА БУТОН:
-            - id="new-game"
-            - class="control-btn new-btn"
-            - 2 span-а: btn-icon (🔄) и btn-text (Нова игра)
-            -->
-            
-            <!-- TODO: Добавете controls-section тук -->
-            
-        </main>
+  <button id="new-game" class="control-btn new-btn">
+    <span class="btn-icon">🔄</span>
+    <span class="btn-text">Нова игра</span>
+  </button>
+</div>
+      </main>
 
-        <!-- 
+      <!-- 
         ============================================
         СЕДМИЦА 11: TODO - СТАТИСТИКИ ПАНЕЛ
         ============================================
@@ -148,15 +110,13 @@
         -->
         
         <!-- TODO: Добавете stats-section тук -->
-        
-        
-        <!-- FOOTER -->
+
+  
         <footer class="game-footer">
             <p>Направено с ❤️ за обучение по програмиране</p>
         </footer>
     </div>
 
-    <!-- JavaScript файл -->
     <script src="game.js"></script>
 </body>
 </html>

@@ -28,7 +28,15 @@ console.log("🎮 Math Battle Arena се зарежда...");
 */
 
 // TODO: Създайте игралните променливи тук
-
+let playerScore = 0
+let timeRemaining = 60
+let currentLevel = 1
+let questionsAnswered = 0
+let correctAnswers = 0
+let gameActive = false
+let gamePaused = false
+let currentQuestion = ""
+let correctAnswer = 0
 
 
 
@@ -53,7 +61,10 @@ console.log("✅ Променливите са създадени!");
 */
 
 // TODO: Създайте константите тук
-
+const GAME_DURATION = 60
+const POINTS_PER_CORRECT = 10
+const QUESTIONS_FOR_LEVEL_UP = 5
+const MAX_LEVEL = 10
 
 
 
@@ -81,7 +92,16 @@ const newGameButton = document.getElementById('new-game');
 */
 
 // TODO: Свържете DOM елементите тук
-
+const questionDisplay = document.getElementById('question-display');
+const scoreDisplay = document.getElementById('score-display');
+const timerDisplay = document.getElementById('timer-display');
+const levelDisplay = document.getElementById('level-display');
+const feedbackDisplay = document.getElementById('feedback-display');
+const answerInput = document.getElementById('answer-input');
+const submitButton = document.getElementById('submit-answer');
+const startButton = document.getElementById('start-game');
+const pauseButton = document.getElementById('pause-game');
+const newGameButton = document.getElementById('new-game');
 
 
 

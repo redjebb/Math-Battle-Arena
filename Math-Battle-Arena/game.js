@@ -92,7 +92,16 @@ const newGameButton = document.getElementById('new-game');
 */
 
 // TODO: Свържете DOM елементите тук
-
+const questionDisplay = document.getElementById('question-display');
+const scoreDisplay = document.getElementById('score-display');
+const timerDisplay = document.getElementById('timer-display');
+const levelDisplay = document.getElementById('level-display');
+const feedbackDisplay = document.getElementById('feedback-display');
+const answerInput = document.getElementById('answer-input');
+const submitButton = document.getElementById('submit-answer');
+const startButton = document.getElementById('start-game');
+const pauseButton = document.getElementById('pause-game');
+const newGameButton = document.getElementById('new-game');
 
 
 

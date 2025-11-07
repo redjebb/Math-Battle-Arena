@@ -28,7 +28,15 @@ console.log("🎮 Math Battle Arena се зарежда...");
 */
 
 // TODO: Създайте игралните променливи тук
-
+let playerScore = 0
+let timeRemaining = 60
+let currentLevel = 1
+let questionsAnswered = 0
+let correctAnswers = 0
+let gameActive = false
+let gamePaused = false
+let currentQuestion = ""
+let correctAnswer = 0
 
 
 

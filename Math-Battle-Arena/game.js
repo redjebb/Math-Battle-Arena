@@ -641,7 +641,16 @@ function resetGame() {
 console.log("✅ Главните функции са готови!");
 
 // ============================================
+<<<<<<< Updated upstream
 // СЕДМИЦА 11: TODO - LOCALSTORAGE (РЕДЖЕБ)
+=======
+<<<<<<< HEAD
+// СЕДМИЦА 11: TODO - LOCALSTORAGE (НИКОЛАЙ)
+=======
+// СЕДМИЦА 11: TODO - LOCALSTORAGE (РЕДЖЕБ)
+>>>>>>> main
+// ============================================
+>>>>>>> Stashed changes
 
 /*
 Инструкции за функция saveHighScore():

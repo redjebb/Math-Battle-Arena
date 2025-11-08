@@ -161,55 +161,60 @@ console.log("🔗 DOM елементите са свързани!");
 
 function generateMathQuestion() {
     console.log("🧮 Генерирам нов въпрос...");
-    
-    // TODO: Създайте масив operations
-    
-    
-    // TODO: Генерирайте случаен индекс
-    
-    
-    // TODO: Изберете операция
-    
-    
-    // TODO: Декларирайте променливи
-    
-    
-    // TODO: Създайте switch statement
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // TODO: Запазете в глобални променливи
-    
-    
-    
-    // TODO: Покажете въпроса на екрана
-    
-    
-    // TODO: Изчистете input полето
-    
-    
-    // TODO: Дайте фокус
-    
-    
-    console.log(`✅ Въпрос: ${currentQuestion} = ? (Отговор: ${correctAnswer})`);
+
+    // 1. Създайте масив с операциите
+    const operations = ['addition', 'subtraction', 'multiplication'];
+
+    // 2. Генерирайте случаен индекс от 0 до 2
+    const randomIndex = Math.floor(Math.random() * 3);
+
+    // 3. Изберете операция от масива
+    const operation = operations[randomIndex];
+
+    // 4. Декларирайте променливи
+    let num1, num2, answer, questionText;
+
+    // 5. Създайте switch statement
+    switch (operation) {
+        case 'addition':
+            num1 = Math.floor(Math.random() * 50) + 1;
+            num2 = Math.floor(Math.random() * 50) + 1;
+            answer = num1 + num2;
+            questionText = num1 + " + " + num2;
+            break;
+
+        case 'subtraction':
+            num1 = Math.floor(Math.random() * 50) + 25;
+            num2 = Math.floor(Math.random() * 25) + 1;
+            answer = num1 - num2;
+            questionText = num1 + " - " + num2;
+            break;
+
+        case 'multiplication':
+            num1 = Math.floor(Math.random() * 12) + 1;
+            num2 = Math.floor(Math.random() * 12) + 1;
+            answer = num1 * num2;
+            questionText = num1 + " × " + num2;
+            break;
+    }
+
+    // 6. Запазете в глобални променливи
+    currentQuestion = questionText;
+    correctAnswer = answer;
+
+    // 7. Покажете въпроса
+    questionDisplay.textContent = currentQuestion + " = ?";
+
+    // 8. Изчистете полето за отговор
+    answerInput.value = '';
+
+    // 9. Дайте фокус на полето
+    answerInput.focus();
+
+    console.log("✅ Нов въпрос:", currentQuestion, "Правилен отговор:", correctAnswer);
 }
+    
+
 
 console.log("✅ Функцията за генериране е готова!");
 

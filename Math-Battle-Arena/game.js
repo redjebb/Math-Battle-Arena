@@ -642,8 +642,11 @@ console.log("✅ Главните функции са готови!");
 
 // ============================================
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // СЕДМИЦА 11: TODO - LOCALSTORAGE (РЕДЖЕБ)
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 // СЕДМИЦА 11: TODO - LOCALSTORAGE (НИКОЛАЙ)
 =======

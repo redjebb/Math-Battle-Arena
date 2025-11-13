@@ -92,6 +92,7 @@
 </div>
       </main>
 
+
       <!-- 
         ============================================
         СЕДМИЦА 11: TODO - СТАТИСТИКИ ПАНЕЛ
@@ -110,7 +111,44 @@
         -->
         
         <!-- TODO: Добавете stats-section тук -->
+      <section id="stats-section" class="stats-section hidden">
+  <div class="stats-header">
+    <h2>📊 Твоите резултати</h2>
+  </div>
+  <div class="stats-grid">
+    <div class="result-card">
+      <div class="result-icon">📝</div>
+      <div class="result-content">
+        <span class="result-title">Общо въпроси</span>
+        <span class="result-value" id="total-questions">0</span>
+      </div>
+    </div>
 
+    <div class="result-card">
+      <div class="result-icon">✅</div>
+      <div class="result-content">
+        <span class="result-title">Правилни</span>
+        <span class="result-value" id="correct-answers">0</span>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-icon">🎯</div>
+      <div class="result-content">
+        <span class="result-title">Точност</span>
+        <span class="result-value" id="accuracy">0%</span>
+      </div>
+    </div>
+
+    <div class="result-card gold">
+      <div class="result-icon">🏆</div>
+      <div class="result-content">
+        <span class="result-title">Рекорд</span>
+        <span class="result-value" id="high-score">0</span>
+      </div>
+    </div>
+  </div>
+       </section>
   
         <footer class="game-footer">
             <p>Направено с ❤️ за обучение по програмиране</p>

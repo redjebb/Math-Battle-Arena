@@ -266,10 +266,28 @@ pauseButton.addEventListener('click', function(){
    if (gamePaused){
       gamePaused = false;
       pauseButton.textContent = "⏸️ Пауза";
+      answerInput.disabled = false;
+      submitButton.disabled = false;
+      pauseButton.disabled = false;
+      startButton.disabled = true;
+
+      
+    stopGameTimer();
+    startGameTimer();
+
 
    } else {
            gamePaused = true;
            pauseButton.textContent = "▶️ Продължи";
+           answerInput.disabled = true;
+           submitButton.disabled = true;
+           pauseButton.disabled = true;
+           startButton.disabled = false;
+
+           if (gameTimer) {
+         clearInterval(gameTimer);
+         gameTimer = null;
+}
        }
 })
 
@@ -320,23 +338,29 @@ console.log("✅ Event listeners са настроени!");
 */
 
 // TODO: Създайте променлива gameTimer
-
+let gameTimer = null;
 
 // TODO: Функция updateTimer
-
-
-
-
+function updateTimer() {
+    timeRemaining--;
+    timerDisplay.textContent = timeRemaining + "s";
+    if (timeRemaining <= 0) endGame();
+}
 
 
 // TODO: Функция startGameTimer
-
+function startGameTimer() {
+    gameTimer = setInterval(updateTimer, 1000);
+}
 
 
 // TODO: Функция stopGameTimer
-
-
-
+function stopGameTimer() {
+    if (gameTimer) {
+        clearInterval(gameTimer);
+        gameTimer = null;
+    }
+}
 
 
 console.log("✅ Таймер функциите са готови!");
@@ -378,34 +402,35 @@ function startGame() {
     console.log("🚀 Стартиране на нова игра...");
     
     // TODO: Нулирайте променливите
-    
-    
-    
-    
-    
-    
-    
+    playerScore = 0;
+    timeRemaining = GAME_DURATION;
+    currentLevel = 1;
+    questionsAnswered = 0;
+    correctAnswers = 0;
+    gameActive = true;
+    gamePaused = false;
     
     // TODO: Активирайте контролите
-    
-    
-    
-    
+    answerInput.disabled = false;
+    submitButton.disabled = false;
+    pauseButton.disabled = false;
+    startButton.disabled = true;
+
     
     // TODO: Обновете дисплея
-    
+     updateDisplay();
     
     // TODO: Стартирайте таймера
-    
+    startGameTimer();
     
     // TODO: Генерирайте въпрос
-    
+    generateMathQuestion();
     
     // TODO: Дайте фокус
-    
+    answerInput.focus();
     
     // TODO: Покажете съобщение
-    
+    showFeedback("🎮 Играта започна! Успех!", "correct");
     
     console.log("✅ Играта започна!");
 }
@@ -431,18 +456,19 @@ function endGame() {
     console.log("🏁 Играта приключва...");
     
     // TODO: Спрете играта
-    
-    
-    
+    gameActive = false;
+    stopGameTimer();
+
     // TODO: Деактивирайте контролите
-    
-    
-    
-    
+    answerInput.disabled = true;
+    submitButton.disabled = true;
+    pauseButton.disabled = true;
+    startButton.disabled = false;
     
     // TODO: Покажете резултат
-    
+    alert("🎯 Игра завършена!\n\nТочки: " + playerScore + "\nОтговори: " + correctAnswers + "/" + questionsAnswered);
 }
+
 
 /*
 Инструкции за функция resetGame():
@@ -471,53 +497,41 @@ function resetGame() {
     console.log("🔄 Рестартиране...");
     
     // TODO: Спрете играта
-    
+    gameActive = false;
+    gamePaused = false;
+    stopGameTimer();
     
     
     
     // TODO: Нулирайте променливите
-    
-    
-    
-    
-    
-    
+    playerScore = 0;
+    timeRemaining = GAME_DURATION;
+    currentLevel = 1;
+    questionsAnswered = 0;
+    correctAnswers = 0;
+   
     
     // TODO: Нулирайте дисплея
-    
+    questionDisplay.textContent = "Натисни 'Старт' за да започнеш! 🎮";
+    answerInput.value = '';
+
     
     
     // TODO: Деактивирайте контролите
-    
-    
-    
-    
+    answerInput.disabled = true;
+    submitButton.disabled = true;
+    pauseButton.disabled = true;
+    startButton.disabled = false;
+
     
     // TODO: Обновете дисплея
-    
+    updateDisplay();
     
     console.log("✅ Играта е рестартирана!");
 }
 
 console.log("✅ Главните функции са готови!");
 
-// ============================================
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// СЕДМИЦА 11: TODO - LOCALSTORAGE (РЕДЖЕБ)
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-<<<<<<< HEAD
-// СЕДМИЦА 11: TODO - LOCALSTORAGE (НИКОЛАЙ)
-=======
-// СЕДМИЦА 11: TODO - LOCALSTORAGE (РЕДЖЕБ)
->>>>>>> main
-// ============================================
->>>>>>> Stashed changes
 
 /*
 Инструкции за функция saveHighScore():
@@ -537,16 +551,17 @@ console.log("✅ Главните функции са готови!");
 function saveHighScore() {
     try {
         // TODO: Вземете текущия рекорд
-        
+        const savedHighScore = localStorage.getItem('mathGameHighScore');
+        const currentHighScore = savedHighScore ? parseInt(savedHighScore) : 0;
         
         
         // TODO: Сравнете и запазете
-        
-        
-        
-        
-        
-        
+        if (playerScore > currentHighScore) {
+            localStorage.setItem('mathGameHighScore', playerScore.toString());
+            return true;
+        } else {
+            return false;
+        }
     } catch (error) {
         console.error("❌ Грешка при запазване:", error);
         return false;
@@ -571,15 +586,16 @@ function saveHighScore() {
 function loadHighScore() {
     try {
         // TODO: Вземете рекорда
-        
+        const savedHighScore = localStorage.getItem('mathGameHighScore');
         
         // TODO: Проверете и покажете
-        
-        
-        
-        
-        
-        
+         if (savedHighScore) {
+            const score = parseInt(savedHighScore);
+            return score;
+        } else {
+            return 0;
+        }
+    
     } catch (error) {
         console.error("❌ Грешка при зареждане:", error);
         return 0;

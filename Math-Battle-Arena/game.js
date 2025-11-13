@@ -150,19 +150,21 @@ function checkAnswer() {
 
 function showFeedback(message, type) {
     // TODO: Задайте текст
-    
+    feedbackDisplay.textContent = message
     
     // TODO: Задайте клас според типа
-    
-    
-    
-    
-    
-    
+    if (type === 'correct'){
+      feedbackDisplay.className = 'feedback-zone correct-feedback'
+    }
+    else if (type === 'wrong'){
+      feedbackDisplay.className = 'feedback-zone wrong-feedback'
+    }
+
     // TODO: Изчистете след 2 секунди
-    
-    
-    
+    setTimeout(() => {
+      feedbackDisplay.textContent = '';
+      feedbackDisplay.className = 'feedback-zone';
+    }, 2000);
     
 }
 
@@ -177,11 +179,11 @@ function showFeedback(message, type) {
 
 function updateDisplay() {
     // TODO: Обновете score
-    
+    scoreDisplay.textContent = playerScore
     // TODO: Обновете level
-    
+    levelDisplay.textContent = currentLevel
     // TODO: Обновете timer
-    
+    timerDisplay.textContent = timeRemaining + "s"
 }
 
 console.log("✅ Функциите за проверка са готови!");
@@ -240,44 +242,48 @@ console.log("✅ Функциите за проверка са готови!");
 */
 
 // TODO: Добавете event listener за Start бутон
-
-
-
-
+startButton.addEventListener('click', function() {
+if (!gameActive) startGame();
+});
 
 // TODO: Добавете event listener за Submit бутон
-
-
-
-
+submitButton.addEventListener('click', function(){
+   if(gameActive && !gamePaused) checkAnswer();
+});
 
 // TODO: Добавете event listener за Enter key
-
-
-
-
-
-
-
+answerInput.addEventListener('keypress', function(event){
+if (event.key === 'Enter' && gameActive && !gamePaused){
+   event.preventDefault();
+   checkAnswer();
+}
+})
 
 // TODO: Добавете event listener за Pause бутон
+pauseButton.addEventListener('click', function(){
+   if (!gameActive) return;
 
+   if (gamePaused){
+      gamePaused = false;
+      pauseButton.textContent = "⏸️ Пауза";
 
-
-
-
-
-
-
-
-
-
-
+   } else {
+           gamePaused = true;
+           pauseButton.textContent = "▶️ Продължи";
+       }
+})
 
 
 
 // TODO: Добавете event listener за New Game бутон
-
+newGameButton.addEventListener('click', function() {
+       if (gameActive) {
+           const confirmed = confirm("Сигурен ли си? Прогресът ще се загуби.");
+           if (!confirmed) return;
+       }
+       resetGame();
+       startGame();
+   });
 
 
 

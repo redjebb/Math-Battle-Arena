@@ -1,33 +1,7 @@
-// ============================================
-// MATH BATTLE ARENA - СКЕЛЕТЕН JAVASCRIPT ФАЙЛ
-// ============================================
-// 
-// Този файл съдържа основната структура.
-// Вашата задача е да попълните липсващите части
-// според инструкциите за всяка седмица.
 
 console.log("🎮 Math Battle Arena се зарежда...");
 
-// ============================================
-// СЕДМИЦА 4: TODO - ОСНОВНИ ПРОМЕНЛИВИ (НИКОЛАЙ)
-// ============================================
 
-/*
-Инструкции:
-Създайте следните променливи с let:
-
-1. playerScore = 0           (точките на играча)
-2. timeRemaining = 60        (оставащи секунди)
-3. currentLevel = 1          (текущо ниво)
-4. questionsAnswered = 0     (общо отговорени въпроси)
-5. correctAnswers = 0        (правилни отговори)
-6. gameActive = false        (дали играта е активна)
-7. gamePaused = false        (дали играта е на пауза)
-8. currentQuestion = ""      (текст на въпроса)
-9. correctAnswer = 0         (правилният отговор)
-*/
-
-// TODO: Създайте игралните променливи тук
 let playerScore = 0
 let timeRemaining = 60
 let currentLevel = 1
@@ -40,27 +14,9 @@ let correctAnswer = 0
 
 
 
-
-
-
-
 console.log("✅ Променливите са създадени!");
 
-// ============================================
-// СЕДМИЦА 4: TODO - КОНСТАНТИ ЗА ИГРАТА (НИКОЛАЙ)
-// ============================================
 
-/*
-Инструкции:
-Създайте следните константи с const:
-
-1. GAME_DURATION = 60              (секунди за игра)
-2. POINTS_PER_CORRECT = 10         (точки за правилен отговор)
-3. QUESTIONS_FOR_LEVEL_UP = 5      (въпроси за ново ниво)
-4. MAX_LEVEL = 10                  (максимално ниво)
-*/
-
-// TODO: Създайте константите тук
 const GAME_DURATION = 60
 const POINTS_PER_CORRECT = 10
 const QUESTIONS_FOR_LEVEL_UP = 5
@@ -71,13 +27,6 @@ const MAX_LEVEL = 10
 
 console.log("⚙️ Константите са заредени!");
 
-// ============================================
-// СЕДМИЦА 4: TODO - DOM ЕЛЕМЕНТИ (НИКОЛАЙ)
-// ============================================
-
-/*
-Инструкции:
-Свържете променливите с HTML елементите използвайки document.getElementById():
 
 const questionDisplay = document.getElementById('question-display');
 const scoreDisplay = document.getElementById('score-display');
@@ -89,92 +38,23 @@ const submitButton = document.getElementById('submit-answer');
 const startButton = document.getElementById('start-game');
 const pauseButton = document.getElementById('pause-game');
 const newGameButton = document.getElementById('new-game');
-*/
-
-// TODO: Свържете DOM елементите тук
-const questionDisplay = document.getElementById('question-display');
-const scoreDisplay = document.getElementById('score-display');
-const timerDisplay = document.getElementById('timer-display');
-const levelDisplay = document.getElementById('level-display');
-const feedbackDisplay = document.getElementById('feedback-display');
-const answerInput = document.getElementById('answer-input');
-const submitButton = document.getElementById('submit-answer');
-const startButton = document.getElementById('start-game');
-const pauseButton = document.getElementById('pause-game');
-const newGameButton = document.getElementById('new-game');
-
-
-
-
-
-
-
-
 
 
 console.log("🔗 DOM елементите са свързани!");
 
-// ============================================
-// СЕДМИЦА 5: TODO - ГЕНЕРИРАНЕ НА ВЪПРОСИ (НИКОЛАЙ)
-// ============================================
 
-/*
-Инструкции за функция generateMathQuestion():
-
-1. Създайте масив operations с 3 операции: 'addition', 'subtraction', 'multiplication'
-2. Генерирайте случайно число от 0 до 2: Math.floor(Math.random() * 3)
-3. Изберете операция от масива
-4. Създайте променливи: num1, num2, answer, questionText
-5. Използвайте switch statement за различните операции:
-   
-   case 'addition':
-     - num1 = Math.floor(Math.random() * 50) + 1
-     - num2 = Math.floor(Math.random() * 50) + 1
-     - answer = num1 + num2
-     - questionText = num1 + " + " + num2
-     
-   case 'subtraction':
-     - num1 = Math.floor(Math.random() * 50) + 25
-     - num2 = Math.floor(Math.random() * 25) + 1
-     - answer = num1 - num2
-     - questionText = num1 + " - " + num2
-     
-   case 'multiplication':
-     - num1 = Math.floor(Math.random() * 12) + 1
-     - num2 = Math.floor(Math.random() * 12) + 1
-     - answer = num1 * num2
-     - questionText = num1 + " × " + num2
-
-6. Запазете в глобални променливи:
-   - currentQuestion = questionText
-   - correctAnswer = answer
-
-7. Покажете въпроса:
-   - questionDisplay.textContent = currentQuestion + " = ?"
-
-8. Изчистете полето за отговор:
-   - answerInput.value = ''
-
-9. Дайте фокус на полето:
-   - answerInput.focus()
-*/
 
 function generateMathQuestion() {
     console.log("🧮 Генерирам нов въпрос...");
 
-    // 1. Създайте масив с операциите
     const operations = ['addition', 'subtraction', 'multiplication'];
 
-    // 2. Генерирайте случаен индекс от 0 до 2
     const randomIndex = Math.floor(Math.random() * 3);
 
-    // 3. Изберете операция от масива
     const operation = operations[randomIndex];
 
-    // 4. Декларирайте променливи
     let num1, num2, answer, questionText;
 
-    // 5. Създайте switch statement
     switch (operation) {
         case 'addition':
             num1 = Math.floor(Math.random() * 50) + 1;
@@ -198,17 +78,13 @@ function generateMathQuestion() {
             break;
     }
 
-    // 6. Запазете в глобални променливи
     currentQuestion = questionText;
     correctAnswer = answer;
 
-    // 7. Покажете въпроса
     questionDisplay.textContent = currentQuestion + " = ?";
 
-    // 8. Изчистете полето за отговор
     answerInput.value = '';
 
-    // 9. Дайте фокус на полето
     answerInput.focus();
 
     console.log("✅ Нов въпрос:", currentQuestion, "Правилен отговор:", correctAnswer);
@@ -218,60 +94,34 @@ function generateMathQuestion() {
 
 console.log("✅ Функцията за генериране е готова!");
 
-// ============================================
-// СЕДМИЦА 7: TODO - ПРОВЕРКА НА ОТГОВОРИ (НИКОЛАЙ)
-// ============================================
 
-/*
-Инструкции за функция checkAnswer():
-
-1. Вземете стойността от answerInput.value
-2. Преобразувайте я в число: Number(userInput)
-3. Увеличете questionsAnswered с 1
-4. Проверете с if-else:
-   
-   if (userAnswer === correctAnswer):
-     - Увеличете playerScore с POINTS_PER_CORRECT
-     - Увеличете correctAnswers с 1
-     - Покажете feedback: showFeedback("✅ Отлично!", "correct")
-   else:
-     - Покажете feedback: showFeedback("❌ Опа! Правилният отговор е " + correctAnswer, "wrong")
-
-5. Обновете дисплея: updateDisplay()
-6. След 1.5 секунди генерирайте нов въпрос:
-   setTimeout(() => {
-       if (gameActive) generateMathQuestion();
-   }, 1500);
-*/
 
 function checkAnswer() {
     console.log("🔍 Проверявам отговора...");
     
-    // TODO: Вземете стойността от input
+    let input = answerInput.value
     
+    let userAnswer = Number(input)
+
     
-    // TODO: Преобразувайте в число
+    questionsAnswered++;
     
+    if (userAnswer === correctAnswer)
+    {
+      playerScore += POINTS_PER_CORRECT
+      correctAnswers++
+      showFeedback("✅ Отлично!", "correct")
+    }
+    else{
+      showFeedback("❌ Опа! Правилният отговор е " + correctAnswer, "wrong")
+    }
     
-    // TODO: Увеличете questionsAnswered
+
+    updateDisplay();
     
-    
-    // TODO: Проверете с if-else
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // TODO: Обновете дисплея
-    
-    
-    // TODO: Генерирайте нов въпрос след 1.5 сек
-    
+    setTimeout(() =>{
+      if (gameActive) generateMathQuestion();
+    }, 1500);
     
     
     

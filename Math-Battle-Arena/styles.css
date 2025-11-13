@@ -88,7 +88,15 @@ body {
 /* TODO: Добавете .background-animation стилове тук */
 .background-animation {
    position: fixed;
-
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%);
+   background-size: 400% 400%;
+   animation: gradientShift 15s ease infinite;
+   opacity: 0.1;
 }
 
 
@@ -251,7 +259,11 @@ body {
 */
 
 /* TODO: Добавете .stat-value стилове тук */
-
+.stat-value{
+   font-size: 1.5rem;
+   font-weight: 700;
+   color: var(--text-primary);
+}
 
 .question-card{
    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
@@ -326,7 +338,11 @@ body {
 */
 
 /* TODO: Добавете .answer-input:focus стилове тук */
-
+.answer-input:focus{
+   border-color: var(--accent-color);
+   box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+   transform: scale(1.02);
+}
 
 
 /* Инструкции за .answer-input:disabled:
@@ -335,7 +351,10 @@ body {
 */
 
 /* TODO: Добавете .answer-input:disabled стилове тук */
-
+.answer-input:disabled{
+   opacity: 0.5;
+   cursor: not-allowed;
+}
 
 
 
@@ -387,7 +406,10 @@ body {
 */
 
 /* TODO: Добавете .submit-btn:hover стилове тук */
-
+.submit-btn:hover{
+   transform: translateY(-3px);
+   box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+}
 
 
 /* Инструкции за .submit-btn:disabled:
@@ -396,7 +418,10 @@ body {
 */
 
 /* TODO: Добавете .submit-btn:disabled стилове тук */
-
+.submit-btn:disabled{
+   opacity: 0.5;
+   cursor: not-allowed;
+}
 
 
 
@@ -418,7 +443,17 @@ body {
 */
 
 /* TODO: Добавете .feedback-zone стилове тук */
-
+.feedback-zone{
+   min-height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.3rem;
+   font-weight: 600;
+   margin-bottom: var(--spacing-md);
+   border-radius: var(--border-radius-sm);
+   padding: var(--spacing-sm);
+}
 
 
 /* Инструкции за .correct-feedback:
@@ -428,7 +463,11 @@ body {
 */
 
 /* TODO: Добавете .correct-feedback стилове тук */
-
+.correct-feedback{
+   color: #38ef7d;
+   background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%);
+   animation: celebrateCorrect 0.6s ease;
+}
 
 
 /* Инструкции за .wrong-feedback:
@@ -438,7 +477,11 @@ body {
 */
 
 /* TODO: Добавете .wrong-feedback стилове тук */
-
+.wrong-feedback{
+   color: #f5576c;
+   background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%);
+   animation: shakeWrong 0.6s ease;
+}
 
 
 /* TODO: Добавете @keyframes celebrateCorrect
@@ -446,7 +489,11 @@ body {
    50% { transform: scale(1.2) rotate(5deg); }
    100% { transform: scale(1) rotate(0deg); opacity: 1; }
 */
-
+@keyframes celebrateCorrect{
+   0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+   50% { transform: scale(1.2) rotate(5deg); }
+   100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
 
 
 /* TODO: Добавете @keyframes shakeWrong
@@ -454,8 +501,11 @@ body {
    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
    20%, 40%, 60%, 80% { transform: translateX(10px); }
 */
-
-
+@keyframes shakeWrong{
+   0%, 100% { transform: translateX(0); }
+   10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+   20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
 
 
 /* ============================================
@@ -562,7 +612,13 @@ body {
 */
 
 /* TODO: Добавете .stats-section стилове тук */
-
+.stats-section{
+   margin-top: var(--spacing-lg);
+   padding: var(--spacing-md);
+   background: rgba(102, 126, 234, 0.1);
+   border-radius: var(--border-radius);
+   border: 1px solid rgba(102, 126, 234, 0.3);
+}
 
 
 /* Инструкции за .hidden:
@@ -570,7 +626,9 @@ body {
 */
 
 /* TODO: Добавете .hidden стилове тук */
-
+.hidden{
+   display: none;
+}
 
 
 /* Инструкции за .stats-grid:
@@ -581,7 +639,12 @@ body {
 */
 
 /* TODO: Добавете .stats-grid стилове тук */
-
+.stats-grid{
+   display:grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: var(--spacing-sm);
+   margin-top: var(--spacing-md);
+}
 
 
 /* Инструкции за .result-card:
@@ -593,7 +656,13 @@ body {
 */
 
 /* TODO: Добавете .result-card стилове тук */
-
+.result-card{
+   background: rgba(255, 255, 255, 0.05);
+   padding: var(--spacing-md);
+   border-radius: var(--border-radius-sm);
+   text-align: center;
+   border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
 
 /* Инструкции за .result-card.gold:
@@ -602,7 +671,10 @@ body {
 */
 
 /* TODO: Добавете .result-card.gold стилове тук */
-
+.result-card.gold{
+   background: var(--gold-gradient);
+   border-color: #ffd200;
+}
 
 
 

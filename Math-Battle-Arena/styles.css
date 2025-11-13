@@ -560,6 +560,13 @@ body {
    justify-content: center;
 }
 
+.control-btn:hover:not(:disabled){
+   transform: translateY(-3px);
+   box-shadow: var(--shadow-glow);
+   cursor: pointer;
+}
+
+
 
 /* Инструкции за .start-btn:
    - background: var(--success-gradient)

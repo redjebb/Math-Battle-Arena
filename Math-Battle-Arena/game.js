@@ -33,11 +33,11 @@ const scoreDisplay = document.getElementById('score-display');
 const timerDisplay = document.getElementById('timer-display');
 const levelDisplay = document.getElementById('level-display');
 const feedbackDisplay = document.getElementById('feedback-display');
-const answerInput = document.getElementById('answer-input');
-const submitButton = document.getElementById('submit-answer');
 const startButton = document.getElementById('start-game');
 const pauseButton = document.getElementById('pause-game');
 const newGameButton = document.getElementById('new-game');
+const submitButton = document.getElementById('submit-answer');
+const answerInput = document.getElementById('answer-input');
 
 
 console.log("🔗 DOM елементите са свързани!");

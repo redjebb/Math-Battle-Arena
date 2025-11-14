@@ -697,3 +697,20 @@ body {
 */
 
 /* TODO: Добавете media query тук */
+@media (max-width: 768px) {
+   .game-container 
+   {
+     padding: var(--spacing-md);
+   }
+ 
+   .question-text 
+   {
+     font-size: clamp(1.5rem, 5vw, 2rem);
+   }
+ 
+   .stat-card 
+   {
+     flex-direction: column;
+     text-align: center;
+   }
+ } 

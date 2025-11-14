@@ -1,6 +1,4 @@
-
 console.log("🎮 Math Battle Arena се зарежда...");
-
 
 let playerScore = 0
 let timeRemaining = 60
@@ -12,45 +10,64 @@ let gamePaused = false
 let currentQuestion = ""
 let correctAnswer = 0
 
-
-
 console.log("✅ Променливите са създадени!");
-
 
 const GAME_DURATION = 60
 const POINTS_PER_CORRECT = 10
 const QUESTIONS_FOR_LEVEL_UP = 5
 const MAX_LEVEL = 10
 
-
-
-
 console.log("⚙️ Константите са заредени!");
-
 
 const questionDisplay = document.getElementById('question-display');
 const scoreDisplay = document.getElementById('score-display');
 const timerDisplay = document.getElementById('timer-display');
 const levelDisplay = document.getElementById('level-display');
 const feedbackDisplay = document.getElementById('feedback-display');
-const answerInput = document.getElementById('answer-input');
-const submitButton = document.getElementById('submit-answer');
 const startButton = document.getElementById('start-game');
 const pauseButton = document.getElementById('pause-game');
 const newGameButton = document.getElementById('new-game');
-
+const submitButton = document.getElementById('submit-answer');
+const answerInput = document.getElementById('answer-input');
 
 console.log("🔗 DOM елементите са свързани!");
 
+let gameTimer = null;
 
+// ============================================
+// СЕДМИЦА 9: TODO - ТАЙМЕР ФУНКЦИИ (РЕДЖЕБ)
+// ============================================
+
+function updateTimer() {
+    if (!gamePaused) {
+        timeRemaining--;
+        timerDisplay.textContent = timeRemaining + "s";
+        if (timeRemaining <= 0) endGame();
+    }
+}
+
+function startGameTimer() {
+    if (!gameTimer) {
+        gameTimer = setInterval(updateTimer, 1000);
+    }
+}
+
+function stopGameTimer() {
+    if (gameTimer) {
+        clearInterval(gameTimer);
+        gameTimer = null;
+    }
+}
+
+// ============================================
+// СЕДМИЦА 7: TODO - ПОМОЩНИ ФУНКЦИИ (РЕДЖЕБ)
+// ============================================
 
 function generateMathQuestion() {
     console.log("🧮 Генерирам нов въпрос...");
 
     const operations = ['addition', 'subtraction', 'multiplication'];
-
     const randomIndex = Math.floor(Math.random() * 3);
-
     const operation = operations[randomIndex];
 
     let num1, num2, answer, questionText;
@@ -82,514 +99,212 @@ function generateMathQuestion() {
     correctAnswer = answer;
 
     questionDisplay.textContent = currentQuestion + " = ?";
-
     answerInput.value = '';
-
     answerInput.focus();
 
     console.log("✅ Нов въпрос:", currentQuestion, "Правилен отговор:", correctAnswer);
 }
-    
-
-
-console.log("✅ Функцията за генериране е готова!");
-
-
 
 function checkAnswer() {
     console.log("🔍 Проверявам отговора...");
     
     let input = answerInput.value
-    
     let userAnswer = Number(input)
-
     
     questionsAnswered++;
     
-    if (userAnswer === correctAnswer)
-    {
-      playerScore += POINTS_PER_CORRECT
-      correctAnswers++
-      showFeedback("✅ Отлично!", "correct")
-    }
-    else{
-      showFeedback("❌ Опа! Правилният отговор е " + correctAnswer, "wrong")
+    if (userAnswer === correctAnswer) {
+        playerScore += POINTS_PER_CORRECT
+        correctAnswers++
+        showFeedback("✅ Отлично!", "correct")
+    } else {
+        showFeedback("❌ Опа! Правилният отговор е " + correctAnswer, "wrong")
     }
     
-
     updateDisplay();
     
-    setTimeout(() =>{
-      if (gameActive) generateMathQuestion();
+    setTimeout(() => {
+        if (gameActive) generateMathQuestion();
     }, 1500);
-    
-    
-    
 }
-
-// ============================================
-<
-// СЕДМИЦА 7: TODO - ПОМОЩНИ ФУНКЦИИ (РЕДЖЕБ)
-// ============================================
-
-/*
-Инструкции за функция showFeedback(message, type):
-
-1. Задайте текст: feedbackDisplay.textContent = message
-2. Проверете типа с if-else:
-   if (type === 'correct'):
-     - feedbackDisplay.className = 'feedback-zone correct-feedback'
-   else if (type === 'wrong'):
-     - feedbackDisplay.className = 'feedback-zone wrong-feedback'
-3. След 2 секунди изчистете:
-   setTimeout(() => {
-       feedbackDisplay.textContent = '';
-       feedbackDisplay.className = 'feedback-zone';
-   }, 2000);
-*/
 
 function showFeedback(message, type) {
-    // TODO: Задайте текст
     feedbackDisplay.textContent = message
     
-    // TODO: Задайте клас според типа
     if (type === 'correct'){
-      feedbackDisplay.className = 'feedback-zone correct-feedback'
-    }
-    else if (type === 'wrong'){
-      feedbackDisplay.className = 'feedback-zone wrong-feedback'
+        feedbackDisplay.className = 'feedback-zone correct-feedback'
+    } else if (type === 'wrong'){
+        feedbackDisplay.className = 'feedback-zone wrong-feedback'
     }
 
-    // TODO: Изчистете след 2 секунди
     setTimeout(() => {
-      feedbackDisplay.textContent = '';
-      feedbackDisplay.className = 'feedback-zone';
+        feedbackDisplay.textContent = '';
+        feedbackDisplay.className = 'feedback-zone';
     }, 2000);
-    
 }
-
-/*
-Инструкции за функция updateDisplay():
-
-Обновете всички display елементи:
-1. scoreDisplay.textContent = playerScore
-2. levelDisplay.textContent = currentLevel
-3. timerDisplay.textContent = timeRemaining + "s"
-*/
 
 function updateDisplay() {
-    // TODO: Обновете score
     scoreDisplay.textContent = playerScore
-    // TODO: Обновете level
     levelDisplay.textContent = currentLevel
-    // TODO: Обновете timer
     timerDisplay.textContent = timeRemaining + "s"
 }
-
-console.log("✅ Функциите за проверка са готови!");
-
-// ============================================
-// СЕДМИЦА 8: TODO - EVENT LISTENERS (РЕДЖЕБ)
-// ============================================
-
-/*
-Инструкции:
-
-1. Start бутон:
-   startButton.addEventListener('click', function() {
-       if (!gameActive) startGame();
-   });
-
-2. Submit бутон:
-   submitButton.addEventListener('click', function() {
-       if (gameActive && !gamePaused) checkAnswer();
-   });
-
-3. Enter key:
-   answerInput.addEventListener('keypress', function(event) {
-       if (event.key === 'Enter' && gameActive && !gamePaused) {
-           event.preventDefault();
-           checkAnswer();
-       }
-   });
-
-4. Pause бутон:
-   pauseButton.addEventListener('click', function() {
-       if (!gameActive) return;
-       
-       if (gamePaused) {
-           gamePaused = false;
-           pauseButton.textContent = "⏸️ Пауза";
-           // Активирайте контролите
-           // Рестартирайте таймера
-       } else {
-           gamePaused = true;
-           pauseButton.textContent = "▶️ Продължи";
-           // Деактивирайте контролите
-           // Спрете таймера
-       }
-   });
-
-5. New Game бутон:
-   newGameButton.addEventListener('click', function() {
-       if (gameActive) {
-           const confirmed = confirm("Сигурен ли си? Прогресът ще се загуби.");
-           if (!confirmed) return;
-       }
-       resetGame();
-       startGame();
-   });
-*/
-
-// TODO: Добавете event listener за Start бутон
-startButton.addEventListener('click', function() {
-if (!gameActive) startGame();
-});
-
-// TODO: Добавете event listener за Submit бутон
-submitButton.addEventListener('click', function(){
-   if(gameActive && !gamePaused) checkAnswer();
-});
-
-// TODO: Добавете event listener за Enter key
-answerInput.addEventListener('keypress', function(event){
-if (event.key === 'Enter' && gameActive && !gamePaused){
-   event.preventDefault();
-   checkAnswer();
-}
-})
-
-// TODO: Добавете event listener за Pause бутон
-pauseButton.addEventListener('click', function(){
-   if (!gameActive) return;
-
-   if (gamePaused){
-      gamePaused = false;
-      pauseButton.textContent = "⏸️ Пауза";
-
-   } else {
-           gamePaused = true;
-           pauseButton.textContent = "▶️ Продължи";
-       }
-})
-
-
-
-// TODO: Добавете event listener за New Game бутон
-newGameButton.addEventListener('click', function() {
-       if (gameActive) {
-           const confirmed = confirm("Сигурен ли си? Прогресът ще се загуби.");
-           if (!confirmed) return;
-       }
-       resetGame();
-       startGame();
-   });
-
-
-
-
-
-
-
-
-console.log("✅ Event listeners са настроени!");
-
-// ============================================
-// СЕДМИЦА 9: TODO - ТАЙМЕР ФУНКЦИИ (РЕДЖЕБ)
-// ============================================
-
-/*
-Инструкции:
-
-1. Създайте глобална променлива:
-   let gameTimer = null;
-
-2. Функция updateTimer():
-   - Намалете timeRemaining с 1
-   - Обновете timerDisplay.textContent = timeRemaining + "s"
-   - Ако timeRemaining <= 0, извикайте endGame()
-
-3. Функция startGameTimer():
-   - gameTimer = setInterval(updateTimer, 1000)
-
-4. Функция stopGameTimer():
-   - if (gameTimer) {
-       clearInterval(gameTimer);
-       gameTimer = null;
-     }
-*/
-
-// TODO: Създайте променлива gameTimer
-
-
-// TODO: Функция updateTimer
-
-
-
-
-
-
-// TODO: Функция startGameTimer
-
-
-
-// TODO: Функция stopGameTimer
-
-
-
-
-
-console.log("✅ Таймер функциите са готови!");
 
 // ============================================
 // СЕДМИЦА 9: TODO - ГЛАВНИ ИГРОВИ ФУНКЦИИ (РЕДЖЕБ)
 // ============================================
 
-/*
-Инструкции за функция startGame():
-
-1. Нулирайте всички променливи:
-   - playerScore = 0
-   - timeRemaining = GAME_DURATION
-   - currentLevel = 1
-   - questionsAnswered = 0
-   - correctAnswers = 0
-   - gameActive = true
-   - gamePaused = false
-
-2. Активирайте контролите:
-   - answerInput.disabled = false
-   - submitButton.disabled = false
-   - pauseButton.disabled = false
-   - startButton.disabled = true
-
-3. Обновете дисплея: updateDisplay()
-
-4. Стартирайте таймера: startGameTimer()
-
-5. Генерирайте въпрос: generateMathQuestion()
-
-6. Дайте фокус: answerInput.focus()
-
-7. Покажете съобщение: showFeedback("🎮 Играта започна! Успех!", "correct")
-*/
-
 function startGame() {
     console.log("🚀 Стартиране на нова игра...");
     
-    // TODO: Нулирайте променливите
+    playerScore = 0;
+    timeRemaining = GAME_DURATION;
+    currentLevel = 1;
+    questionsAnswered = 0;
+    correctAnswers = 0;
+    gameActive = true;
+    gamePaused = false;
     
+    answerInput.disabled = false;
+    submitButton.disabled = false;
+    pauseButton.disabled = false;
+    startButton.disabled = true;
     
-    
-    
-    
-    
-    
-    
-    // TODO: Активирайте контролите
-    
-    
-    
-    
-    
-    // TODO: Обновете дисплея
-    
-    
-    // TODO: Стартирайте таймера
-    
-    
-    // TODO: Генерирайте въпрос
-    
-    
-    // TODO: Дайте фокус
-    
-    
-    // TODO: Покажете съобщение
-    
+    updateDisplay();
+    startGameTimer();
+    generateMathQuestion();
+    answerInput.focus();
+    showFeedback("🎮 Играта започна! Успех!", "correct");
     
     console.log("✅ Играта започна!");
 }
 
-/*
-Инструкции за функция endGame():
-
-1. Спрете играта:
-   - gameActive = false
-   - stopGameTimer()
-
-2. Деактивирайте контролите:
-   - answerInput.disabled = true
-   - submitButton.disabled = true
-   - pauseButton.disabled = true
-   - startButton.disabled = false
-
-3. Покажете резултат:
-   alert("🎯 Игра завършена!\n\nТочки: " + playerScore + "\nОтговори: " + correctAnswers + "/" + questionsAnswered);
-*/
-
 function endGame() {
     console.log("🏁 Играта приключва...");
     
-    // TODO: Спрете играта
+    gameActive = false;
+    stopGameTimer();
     
+    answerInput.disabled = true;
+    submitButton.disabled = true;
+    pauseButton.disabled = true;
+    startButton.disabled = false;
     
-    
-    // TODO: Деактивирайте контролите
-    
-    
-    
-    
-    
-    // TODO: Покажете резултат
-    
+    alert("🎯 Игра завършена!\n\nТочки: " + playerScore + "\nОтговори: " + correctAnswers + "/" + questionsAnswered);
 }
-
-/*
-Инструкции за функция resetGame():
-
-1. Спрете играта:
-   - gameActive = false
-   - gamePaused = false
-   - stopGameTimer()
-
-2. Нулирайте променливите (като в startGame)
-
-3. Нулирайте дисплея:
-   - questionDisplay.textContent = "Натисни 'Старт' за да започнеш! 🎮"
-   - answerInput.value = ''
-
-4. Деактивирайте контролите:
-   - answerInput.disabled = true
-   - submitButton.disabled = true
-   - pauseButton.disabled = true
-   - startButton.disabled = false
-
-5. Обновете дисплея: updateDisplay()
-*/
 
 function resetGame() {
     console.log("🔄 Рестартиране...");
     
-    // TODO: Спрете играта
+    gameActive = false;
+    gamePaused = false;
+    stopGameTimer();
     
+    playerScore = 0;
+    timeRemaining = GAME_DURATION;
+    currentLevel = 1;
+    questionsAnswered = 0;
+    correctAnswers = 0;
     
+    questionDisplay.textContent = "Натисни 'Старт' за да започнеш! 🎮";
+    answerInput.value = '';
     
+    answerInput.disabled = true;
+    submitButton.disabled = true;
+    pauseButton.disabled = true;
+    startButton.disabled = false;
     
-    // TODO: Нулирайте променливите
-    
-    
-    
-    
-    
-    
-    
-    // TODO: Нулирайте дисплея
-    
-    
-    
-    // TODO: Деактивирайте контролите
-    
-    
-    
-    
-    
-    // TODO: Обновете дисплея
-    
-    
+    updateDisplay();
     console.log("✅ Играта е рестартирана!");
 }
 
-console.log("✅ Главните функции са готови!");
-
 // ============================================
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// СЕДМИЦА 11: TODO - LOCALSTORAGE (РЕДЖЕБ)
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-<<<<<<< HEAD
-// СЕДМИЦА 11: TODO - LOCALSTORAGE (НИКОЛАЙ)
-=======
-// СЕДМИЦА 11: TODO - LOCALSTORAGE (РЕДЖЕБ)
->>>>>>> main
+// СЕДМИЦА 7: TODO - LOCALSTORAGE ФУНКЦИИ
 // ============================================
->>>>>>> Stashed changes
-
-/*
-Инструкции за функция saveHighScore():
-
-1. Вземете текущия рекорд:
-   const savedHighScore = localStorage.getItem('mathGameHighScore');
-   const currentHighScore = savedHighScore ? parseInt(savedHighScore) : 0;
-
-2. Ако playerScore > currentHighScore:
-   - localStorage.setItem('mathGameHighScore', playerScore.toString());
-   - return true;
-
-3. Иначе:
-   - return false;
-*/
 
 function saveHighScore() {
     try {
-        // TODO: Вземете текущия рекорд
+        const savedHighScore = localStorage.getItem('mathGameHighScore');
+        const currentHighScore = savedHighScore ? parseInt(savedHighScore) : 0;
         
-        
-        
-        // TODO: Сравнете и запазете
-        
-        
-        
-        
-        
-        
+        if (playerScore > currentHighScore) {
+            localStorage.setItem('mathGameHighScore', playerScore.toString());
+            return true;
+        } else {
+            return false;
+        }
     } catch (error) {
         console.error("❌ Грешка при запазване:", error);
         return false;
     }
 }
 
-/*
-Инструкции за функция loadHighScore():
-
-1. Вземете рекорда:
-   const savedHighScore = localStorage.getItem('mathGameHighScore');
-
-2. Ако има запазен рекорд:
-   - const score = parseInt(savedHighScore);
-   - Покажете го на екрана (ако имате highScoreDisplay елемент)
-   - return score;
-
-3. Иначе:
-   - return 0;
-*/
-
 function loadHighScore() {
     try {
-        // TODO: Вземете рекорда
+        const savedHighScore = localStorage.getItem('mathGameHighScore');
         
-        
-        // TODO: Проверете и покажете
-        
-        
-        
-        
-        
-        
+        if (savedHighScore) {
+            const score = parseInt(savedHighScore);
+            return score;
+        } else {
+            return 0;
+        }
     } catch (error) {
         console.error("❌ Грешка при зареждане:", error);
         return 0;
     }
 }
 
-// Заредете рекорда при стартиране
 loadHighScore();
 
 console.log("✅ LocalStorage функциите са готови!");
+
+// ============================================
+// СЕДМИЦА 8: TODO - EVENT LISTENERS (РЕДЖЕБ)
+// ============================================
+
+startButton.addEventListener('click', function() {
+    if (!gameActive) startGame();
+});
+
+submitButton.addEventListener('click', function(){
+    if(gameActive && !gamePaused) checkAnswer();
+});
+
+answerInput.addEventListener('keypress', function(event){
+    if (event.key === 'Enter' && gameActive && !gamePaused){
+        event.preventDefault();
+        checkAnswer();
+    }
+});
+
+pauseButton.addEventListener('click', function(){
+    if (!gameActive) return;
+
+    if (gamePaused){
+        gamePaused = false;
+        pauseButton.textContent = "⏸️ Пауза";
+        answerInput.disabled = false;
+        submitButton.disabled = false;
+        startGameTimer();
+    } else {
+        gamePaused = true;
+        pauseButton.textContent = "▶️ Продължи";
+        answerInput.disabled = true;
+        submitButton.disabled = true;
+        stopGameTimer();
+    }
+});
+
+newGameButton.addEventListener('click', function() {
+    if (gameActive) {
+        const confirmed = confirm("Сигурен ли си? Прогресът ще се загуби.");
+        if (!confirmed) return;
+    }
+    resetGame();
+    startGame();
+});
+
+console.log("✅ Event listeners са настроени!");
 
 // ============================================
 // ФИНАЛНА ИНИЦИАЛИЗАЦИЯ

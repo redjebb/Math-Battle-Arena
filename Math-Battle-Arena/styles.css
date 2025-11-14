@@ -181,6 +181,7 @@ body {
    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
    gap: var(--spacing-md);
    margin-top: var(--spacing-md);
+   margin-bottom: var(--spacing-lg);
 }
 
 .stat-card{
@@ -281,6 +282,15 @@ body {
    color: var(--text-primary);
    letter-spacing: 2px;
 }
+
+.question-badge {
+    font-size: 1.3rem;           
+    font-weight: 700;            
+    text-align: center;        
+    margin-bottom: var(--spacing-md); 
+    color: var(--text-primary);  
+}
+
 
 
 .answer-section{
@@ -526,6 +536,8 @@ body {
    gap: var(--spacing-sm);
    justify-content: center;
    flex-wrap: wrap;
+   margin-top: var(--spacing-lg); 
+   margin-bottom: var(--spacing-lg);
 }
 
 
@@ -559,6 +571,13 @@ body {
    min-width: 140px;
    justify-content: center;
 }
+
+.control-btn:hover:not(:disabled){
+   transform: translateY(-3px);
+   box-shadow: var(--shadow-glow);
+   cursor: pointer;
+}
+
 
 
 /* Инструкции за .start-btn:
@@ -674,6 +693,12 @@ body {
 .result-card.gold{
    background: var(--gold-gradient);
    border-color: #ffd200;
+}
+
+footer {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    font-size: 0.9rem;
 }
 
 

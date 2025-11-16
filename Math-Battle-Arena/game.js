@@ -317,3 +317,4 @@ window.addEventListener('load', function() {
 });
 
 console.log("🎉 Скелетът е готов за попълване!");
+  

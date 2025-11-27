@@ -13,9 +13,20 @@ let correctAnswer = 0
 console.log("✅ Променливите са създадени!");
 
 const GAME_DURATION = 60
-const POINTS_PER_CORRECT = 10
-const QUESTIONS_FOR_LEVEL_UP = 5
 const MAX_LEVEL = 10
+
+const LEVEL_CONFIG = [
+    { level: 1, pointsNeeded: 50, timeBonus: 0 }, // Ниво 1 не дава бонус време, служи за старт
+    { level: 2, pointsNeeded: 120, timeBonus: 10 },
+    { level: 3, pointsNeeded: 220, timeBonus: 15 },
+    { level: 4, pointsNeeded: 350, timeBonus: 20 },
+    { level: 5, pointsNeeded: 500, timeBonus: 25 },
+    { level: 6, pointsNeeded: 700, timeBonus: 30 },
+    { level: 7, pointsNeeded: 950, timeBonus: 35 },
+    { level: 8, pointsNeeded: 1250, timeBonus: 40 },
+    { level: 9, pointsNeeded: 1400, timeBonus: 45 },
+    { level: 10, pointsNeeded: 1700, timeBonus: 50 },
+];
 
 console.log("⚙️ Константите са заредени!");
 
@@ -72,24 +83,45 @@ function generateMathQuestion() {
 
     let num1, num2, answer, questionText;
 
+    // Динамични максимални стойности базирани на нивото
+    // Базови стойности за Ниво 1
+    let maxAddSub = 10; 
+    let maxMul = 10;
+
+    // Увеличаване на обхвата след Ниво 1
+    if (currentLevel > 1) {
+        // Добавяне/Изваждане: Расте с 10-20 на ниво след 1-во
+        maxAddSub = 10 + (currentLevel - 1) * 20; 
+        // Умножение: Максималният множител расте с 5 на ниво
+        maxMul = 10 + (currentLevel - 1) * 5; 
+    }
+    
+    // Ограничение: За да не станат числата прекалено огромни
+    if (maxAddSub > 500) maxAddSub = 500;
+    if (maxMul > 50) maxMul = 50;
+    //  КРАЙ НА НОВОТО
+
     switch (operation) {
         case 'addition':
-            num1 = Math.floor(Math.random() * 50) + 1;
-            num2 = Math.floor(Math.random() * 50) + 1;
+            // Числа в обхвата [1, maxAddSub]
+            num1 = Math.floor(Math.random() * maxAddSub) + 1;
+            num2 = Math.floor(Math.random() * maxAddSub) + 1;
             answer = num1 + num2;
             questionText = num1 + " + " + num2;
             break;
 
         case 'subtraction':
-            num1 = Math.floor(Math.random() * 50) + 25;
-            num2 = Math.floor(Math.random() * 25) + 1;
+            // За да избегнем отрицателни числа: num1 > num2
+            num2 = Math.floor(Math.random() * maxAddSub) + 1;
+            num1 = Math.floor(Math.random() * (maxAddSub - num2 + 1)) + num2; 
             answer = num1 - num2;
             questionText = num1 + " - " + num2;
             break;
 
         case 'multiplication':
-            num1 = Math.floor(Math.random() * 12) + 1;
-            num2 = Math.floor(Math.random() * 12) + 1;
+            // Числа в обхвата [1, maxMul]
+            num1 = Math.floor(Math.random() * maxMul) + 1;
+            num2 = Math.floor(Math.random() * maxMul) + 1;
             answer = num1 * num2;
             questionText = num1 + " × " + num2;
             break;
@@ -102,30 +134,42 @@ function generateMathQuestion() {
     answerInput.value = '';
     answerInput.focus();
 
-    console.log("✅ Нов въпрос:", currentQuestion, "Правилен отговор:", correctAnswer);
+    console.log(`✅ Нов въпрос (Ниво ${currentLevel}): ${currentQuestion}. Обхват: ${maxAddSub}/${maxMul}`);
 }
 
 function checkAnswer() {
-    console.log("🔍 Проверявам отговора...");
-    
-    let input = answerInput.value
-    let userAnswer = Number(input)
-    
-    questionsAnswered++;
-    
-    if (userAnswer === correctAnswer) {
-        playerScore += POINTS_PER_CORRECT
-        correctAnswers++
-        showFeedback("✅ Отлично!", "correct")
-    } else {
-        showFeedback("❌ Опа! Правилният отговор е " + correctAnswer, "wrong")
-    }
-    
-    updateDisplay();
-    
-    setTimeout(() => {
-        if (gameActive) generateMathQuestion();
-    }, 1500);
+    console.log("🔍 Проверявам отговора...");
+    
+    let input = answerInput.value
+    let userAnswer = Number(input)
+    
+    questionsAnswered++;
+    
+    if (userAnswer === correctAnswer) {
+        
+        // Базовата формула: 10 точки + (Нивото - 1) * 5
+        const levelPoints = 10 + (currentLevel - 1) * 5; 
+        
+        playerScore += levelPoints; // Добавяме точките към резултата
+        
+        correctAnswers++;
+        
+        // Използваме levelPoints в съобщението
+        showFeedback(`✅ Отлично! (+${levelPoints} точки)`, "correct") 
+        
+        // Проверка за смяна на нивото и добавяне на време
+        checkLevelUp(); 
+        
+    } else {
+        showFeedback("❌ Опа! Правилният отговор е " + correctAnswer, "wrong")
+    }
+    
+    updateDisplay(); // Актуализираме дисплея (точки, ниво, време)
+        
+    // Генериране на следващ въпрос след 1.5 секунди
+    setTimeout(() => {
+        if (gameActive) generateMathQuestion();
+    }, 1500);
 }
 
 function showFeedback(message, type) {
@@ -305,6 +349,36 @@ newGameButton.addEventListener('click', function() {
 });
 
 console.log("✅ Event listeners са настроени!");
+
+// ============================================
+// СЕДМИЦА 12: TODO - АЛГОРИТЪМ ЗА НИВАТА
+// ============================================
+
+function checkLevelUp() {
+    // Търсим следващото ниво
+    const nextLevelConfig = LEVEL_CONFIG.find(config => config.level === currentLevel + 1);
+
+    // 1. Проверка дали има следващо ниво и дали сме достигнали нужните точки
+    if (nextLevelConfig && playerScore >= nextLevelConfig.pointsNeeded) {
+        
+        // Смяна на нивото
+        currentLevel = nextLevelConfig.level;
+        
+        // Добавяне на време
+        timeRemaining += nextLevelConfig.timeBonus;
+
+        // Показване на фийдбек
+        showFeedback(
+            `🚀 Ниво ${currentLevel} Отключено! (+${nextLevelConfig.timeBonus}s)`,
+            "correct"
+        );
+        
+        // Актуализиране на дисплея за време и ниво
+        updateDisplay();
+        
+        console.log(`✅ Преминато на ниво ${currentLevel}. Точки: ${playerScore}, Време: ${nextLevelConfig.timeBonus}s`);
+    }
+}
 
 // ============================================
 // ФИНАЛНА ИНИЦИАЛИЗАЦИЯ

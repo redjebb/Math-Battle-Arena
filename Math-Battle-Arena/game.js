@@ -17,14 +17,12 @@ const MAX_LEVEL = 10
 
 const LEVEL_CONFIG = [
     { level: 1, pointsNeeded: 50, timeBonus: 0 }, 
-    { level: 2, pointsNeeded: 120, timeBonus: 20 },
-    { level: 3, pointsNeeded: 250, timeBonus: 25 }, 
-    { level: 4, pointsNeeded: 400, timeBonus: 30 },  
-    { level: 5, pointsNeeded: 600, timeBonus: 35 },  
-    { level: 6, pointsNeeded: 850, timeBonus: 40 },  
-    { level: 7, pointsNeeded: 1100, timeBonus: 45 },
-    { level: 8, pointsNeeded: 1400, timeBonus: 50 }
-];
+    { level: 2, pointsNeeded: 120, timeBonus: 10 },
+    { level: 3, pointsNeeded: 250, timeBonus: 12 }, 
+    { level: 4, pointsNeeded: 450, timeBonus: 15 },  
+    { level: 5, pointsNeeded: 700, timeBonus: 18 },  
+    { level: 6, pointsNeeded: 1000, timeBonus: 20 }
+];  
 
 console.log("⚙️ Константите са заредени!");
 
@@ -83,8 +81,8 @@ function generateMathQuestion() {
 
     // Динамични максимални стойности базирани на нивото
     // Базови стойности за Ниво 1
-    let maxAddSub = 10; 
-    let maxMul = 10;
+   let maxAddSub = 10 + (currentLevel - 1) * 15;
+    let maxMul = 5 + currentLevel * 2;
 
     // Увеличаване на обхвата след Ниво 1
     if (currentLevel > 1) {

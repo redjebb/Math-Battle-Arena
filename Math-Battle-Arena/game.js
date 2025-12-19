@@ -1,7 +1,7 @@
 console.log("🎮 Math Battle Arena се зарежда...");
 
 let playerScore = 0
-let timeRemaining = 60
+let timeRemaining = 90
 let currentLevel = 1
 let questionsAnswered = 0
 let correctAnswers = 0
@@ -16,16 +16,14 @@ const GAME_DURATION = 60
 const MAX_LEVEL = 10
 
 const LEVEL_CONFIG = [
-    { level: 1, pointsNeeded: 50, timeBonus: 0 }, // Ниво 1 не дава бонус време, служи за старт
-    { level: 2, pointsNeeded: 120, timeBonus: 10 },
-    { level: 3, pointsNeeded: 220, timeBonus: 15 },
-    { level: 4, pointsNeeded: 350, timeBonus: 20 },
-    { level: 5, pointsNeeded: 500, timeBonus: 25 },
-    { level: 6, pointsNeeded: 700, timeBonus: 30 },
-    { level: 7, pointsNeeded: 950, timeBonus: 35 },
-    { level: 8, pointsNeeded: 1250, timeBonus: 40 },
-    { level: 9, pointsNeeded: 1400, timeBonus: 45 },
-    { level: 10, pointsNeeded: 1700, timeBonus: 50 },
+    { level: 1, pointsNeeded: 50, timeBonus: 0 }, 
+    { level: 2, pointsNeeded: 120, timeBonus: 20 },
+    { level: 3, pointsNeeded: 250, timeBonus: 25 }, 
+    { level: 4, pointsNeeded: 400, timeBonus: 30 },  
+    { level: 5, pointsNeeded: 600, timeBonus: 35 },  
+    { level: 6, pointsNeeded: 850, timeBonus: 40 },  
+    { level: 7, pointsNeeded: 1100, timeBonus: 45 },
+    { level: 8, pointsNeeded: 1400, timeBonus: 50 }
 ];
 
 console.log("⚙️ Константите са заредени!");
@@ -138,38 +136,35 @@ function generateMathQuestion() {
 }
 
 function checkAnswer() {
-    console.log("🔍 Проверявам отговора...");
-    
-    let input = answerInput.value
-    let userAnswer = Number(input)
-    
-    questionsAnswered++;
-    
-    if (userAnswer === correctAnswer) {
-        
-        // Базовата формула: 10 точки + (Нивото - 1) * 5
-        const levelPoints = 10 + (currentLevel - 1) * 5; 
-        
-        playerScore += levelPoints; // Добавяме точките към резултата
-        
-        correctAnswers++;
-        
-        // Използваме levelPoints в съобщението
-        showFeedback(`✅ Отлично! (+${levelPoints} точки)`, "correct") 
-        
-        // Проверка за смяна на нивото и добавяне на време
-        checkLevelUp(); 
-        
-    } else {
-        showFeedback("❌ Опа! Правилният отговор е " + correctAnswer, "wrong")
-    }
-    
-    updateDisplay(); // Актуализираме дисплея (точки, ниво, време)
-        
-    // Генериране на следващ въпрос след 1.5 секунди
-    setTimeout(() => {
-        if (gameActive) generateMathQuestion();
-    }, 1500);
+    let input = answerInput.value;
+    let userAnswer = Number(input);
+    
+    if (userAnswer === correctAnswer) {
+        const levelPoints = 10 + (currentLevel - 1) * 5;
+        playerScore += levelPoints;
+        correctAnswers++;
+
+        // Участникът получава бонус равен на нивото + 1
+        // Ниво 1: +2 сек | Ниво 5: +6 сек
+        // Това компенсира времето за мислене при по-трудните нива.
+        const timeBonusPerAnswer = currentLevel + 1;
+        timeRemaining += timeBonusPerAnswer; 
+
+        showFeedback(`✅ +${levelPoints} т. | +${timeBonusPerAnswer}с`, "correct");
+        checkLevelUp();
+    } else {
+        // При грешен отговор се отнема малко време (3 сек)
+        // Това създава риск и прави играта по-истинска.
+        timeRemaining = Math.max(0, timeRemaining - 3); 
+        showFeedback(`❌ Грешно! -3 сек`, "wrong");
+    }
+    
+    updateDisplay();
+    
+    // 1.2 секунди пауза (достатъчно да видиш грешката, но не бавно)
+    setTimeout(() => {
+        if (gameActive) generateMathQuestion();
+    }, 1200); 
 }
 
 function showFeedback(message, type) {

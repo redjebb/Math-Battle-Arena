@@ -102,7 +102,6 @@
              * Карта 2: icon ✅, title "Правилни", id="correct-answers"
              * Карта 3: icon 🎯, title "Точност", id="accuracy"
              * Карта 4: icon 🏆, class="result-card gold", title "Рекорд", id="high-score"
-             
         -->
         
         <!-- TODO: Добавете stats-section тук -->
@@ -143,6 +142,19 @@
       </div>
     </div>
   </div>
+
+  <div id="custom-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div id="modal-icon" class="modal-icon">⚠️</div>
+        <h2 id="modal-title">Заглавие</h2>
+        <p id="modal-message">Съобщение към играча...</p>
+        <div class="modal-actions">
+            <button id="modal-cancel" class="control-btn pause-btn">Отказ</button>
+            <button id="modal-confirm" class="control-btn start-btn">Потвърди</button>
+        </div>
+    </div>
+</div>
+
        </section>
   
         <footer class="game-footer">

@@ -36,10 +36,43 @@ const pauseButton = document.getElementById('pause-game');
 const newGameButton = document.getElementById('new-game');
 const submitButton = document.getElementById('submit-answer');
 const answerInput = document.getElementById('answer-input');
+const customModal = document.getElementById('custom-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalMessage = document.getElementById('modal-message');
+const modalIcon = document.getElementById('modal-icon');
+const modalConfirmBtn = document.getElementById('modal-confirm');
+const modalCancelBtn = document.getElementById('modal-cancel');
 
 console.log("🔗 DOM елементите са свързани!");
 
 let gameTimer = null;
+let modalCallback = null; 
+
+function showCustomModal(title, message, icon, confirmText, showCancel, onConfirm) {
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+    modalIcon.textContent = icon;
+    modalConfirmBtn.textContent = confirmText;
+    
+    if (showCancel) {
+        modalCancelBtn.classList.remove('hidden');
+    } else {
+        modalCancelBtn.classList.add('hidden');
+    }
+
+    customModal.classList.remove('hidden');
+    modalCallback = onConfirm;
+}
+
+modalConfirmBtn.addEventListener('click', () => {
+    customModal.classList.add('hidden');
+    if (typeof modalCallback === 'function') modalCallback();
+});
+
+modalCancelBtn.addEventListener('click', () => {
+    customModal.classList.add('hidden');
+    modalCallback = null;
+});
 
 // ============================================
 // СЕДМИЦА 9: TODO - ТАЙМЕР ФУНКЦИИ (РЕДЖЕБ)
@@ -226,7 +259,14 @@ function endGame() {
     pauseButton.disabled = true;
     startButton.disabled = false;
     
-    alert("🎯 Игра завършена!\n\nТочки: " + playerScore + "\nОтговори: " + correctAnswers + "/" + questionsAnswered);
+    showCustomModal(
+    "🎯 Играта приключи!", 
+    `Точки: ${playerScore}\nОтговори: ${correctAnswers}/${questionsAnswered}`, 
+    "🏆", 
+    "Супер!", 
+    false, 
+    null
+);
 }
 
 function resetGame() {
@@ -334,11 +374,18 @@ pauseButton.addEventListener('click', function(){
 
 newGameButton.addEventListener('click', function() {
     if (gameActive) {
-        const confirmed = confirm("Сигурен ли си? Прогресът ще се загуби.");
-        if (!confirmed) return;
-    }
+    showCustomModal(
+        "Нова игра?", 
+        "Сигурен ли си? Прогресът ти ще бъде загубен.", 
+        "🔄", 
+        "Да, започни!", 
+        true, 
+        () => { resetGame(); startGame(); }
+    );
+} else {
     resetGame();
     startGame();
+}
 });
 
 console.log("✅ Event listeners са настроени!");

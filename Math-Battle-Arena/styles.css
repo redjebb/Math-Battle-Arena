@@ -1,24 +1,8 @@
-/* ============================================
-   MATH BATTLE ARENA - СКЕЛЕТЕН CSS ФАЙЛ
-   ============================================
-   
-   Този файл съдържа основната структура.
-   Вашата задача е да попълните липсващите стилове
-   според инструкциите за всяка седмица.
-*/
-
-/* ============================================
-   СЕДМИЦА 3: CSS ПРОМЕНЛИВИ
-   ============================================
-   Инструкции:
-   1. Вече има готови променливи в :root
-   2. Прегледайте ги и разберете какво правят
-   3. Можете да промените цветовете по ваш избор
-*/
-
 :root {
     /* Цветови градиенти */
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ГЛОБАЛНИТЕ ЦВЕТОВЕ
+    --primary-gradient: linear-gradient(135deg, #00b4db 0%, #0083b0 100%); */
     --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
     --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
@@ -28,12 +12,16 @@
     --card-bg: #1a1a2e;
     --text-primary: #ffffff;
     --text-secondary: #a0a0b8;
+    /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ГЛОБАЛНИТЕ ЦВЕТОВЕ
+    --аccent-color: #58a6ff; */
     --accent-color: #667eea;
     
     /* Сенки */
     --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+    /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ГЛОБАЛНИТЕ ЦВЕТОВЕ
+    --shadow-glow: 0 0 40px rgba(88, 166, 255, 0.3); */
     --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.4);
     
     /* Размери */
@@ -65,27 +53,6 @@ body {
 }
 
 
-
-/* ============================================
-   СЕДМИЦА 10: TODO - АНИМИРАН ФОН
-   ============================================
-   Инструкции за .background-animation:
-   1. position: fixed
-   2. top, left: 0
-   3. width, height: 100%
-   4. z-index: -1
-   5. background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%)
-   6. background-size: 400% 400%
-   7. animation: gradientShift 15s ease infinite
-   8. opacity: 0.1
-   
-   Инструкции за @keyframes gradientShift:
-   0% { background-position: 0% 50%; }
-   50% { background-position: 100% 50%; }
-   100% { background-position: 0% 50%; }
-*/
-
-/* TODO: Добавете .background-animation стилове тук */
 .background-animation {
    position: fixed;
    top: 0;
@@ -94,6 +61,8 @@ body {
    height: 100%;
    z-index: -1;
    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%);
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ФОНА 
+   background: linear-gradient(135deg, #00b4db 0%, #0575e6 25%, #58a6ff 50%, #00b4db 75%, #0575e6 100%); */
    background-size: 400% 400%;
    animation: gradientShift 15s ease infinite;
    opacity: 0.1;
@@ -101,7 +70,6 @@ body {
 
 
 
-/* TODO: Добавете @keyframes gradientShift тук */
 @keyframes gradientShift{
    0% {background-position: 0% 50%;}
    50% {background-position: 100% 50%}
@@ -133,39 +101,18 @@ body {
    margin-bottom: var(--spacing-md);
 }
 
-/* Инструкции за .logo-icon:
-   - font-size: 3rem
-   - animation: pulse 2s ease-in-out infinite
-*/
 
-/* TODO: Добавете .logo-icon стилове тук */
 .logo-icon{
    font-size: 3rem;
    animation: pulse 2s ease-in-out infinite;
 }
 
-/* СЕДМИЦА 10: TODO - Pulse анимация
-   @keyframes pulse:
-   0%, 100% { transform: scale(1); }
-   50% { transform: scale(1.1); }
-*/
-
-/* TODO: Добавете @keyframes pulse тук */
 @keyframes pulse{
    0%, 100% { transform: scale(1); }
    50% { transform: scale(1.1); }
 }
 
-/* Инструкции за .game-title:
-   - font-size: clamp(1.8rem, 5vw, 2.5rem)
-   - font-weight: 700
-   - background: var(--primary-gradient)
-   - -webkit-background-clip: text
-   - -webkit-text-fill-color: transparent
-   - background-clip: text
-*/
 
-/* TODO: Добавете .game-title стилове тук */
 .game-title{
    font-size: clamp(1.8rem, 5vw, 2.5rem);
    font-weight: 700;
@@ -185,6 +132,9 @@ body {
 }
 
 .stat-card{
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
+   background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(0, 131, 176, 0.1) 100%);
+   border: 1px solid rgba(88, 166, 255, 0.3); */
    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
    border: 1px solid rgba(102, 126, 234, 0.3);
    border-radius: var(--border-radius-sm);
@@ -196,14 +146,6 @@ body {
 }
 
 
-/* СЕДМИЦА 10: TODO - Hover ефект за .stat-card
-   .stat-card:hover:
-   - transform: translateY(-3px)
-   - box-shadow: var(--shadow-glow)
-   - border-color: var(--accent-color)
-*/
-
-/* TODO: Добавете .stat-card:hover стилове тук */
 .stat-card:hover{
    transform: translateY(-3px);
    box-shadow: var(--shadow-glow);
@@ -211,23 +153,10 @@ body {
 }
 
 
-/* Инструкции за .stat-icon:
-   - font-size: 2rem
-*/
-
-/* TODO: Добавете .stat-icon стилове тук */
 .stat-icon{
    font-size: 2rem;
 }
 
-
-/* Инструкции за .stat-content:
-   - display: flex
-   - flex-direction: column
-   - align-items: flex-start
-*/
-
-/* TODO: Добавете .stat-content стилове тук */
 .stat-content{
    display: flex;
    flex-direction: column;
@@ -235,15 +164,6 @@ body {
 }
 
 
-/* Инструкции за .stat-label:
-   - font-size: 0.75rem
-   - color: var(--text-secondary)
-   - text-transform: uppercase
-   - letter-spacing: 1px
-   - font-weight: 600
-*/
-
-/* TODO: Добавете .stat-label стилове тук */
 .stat-label{
    font-size: 0.75rem;
    color: var(--text-secondary);
@@ -253,13 +173,6 @@ body {
 }
 
 
-/* Инструкции за .stat-value:
-   - font-size: 1.5rem
-   - font-weight: 700
-   - color: var(--text-primary)
-*/
-
-/* TODO: Добавете .stat-value стилове тук */
 .stat-value{
    font-size: 1.5rem;
    font-weight: 700;
@@ -267,6 +180,9 @@ body {
 }
 
 .question-card{
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
+   background: linear-gradient(135deg, rgba(88, 166, 255, 0.15) 0%, rgba(0, 131, 176, 0.15) 100%);
+   border: 2px solid rgba(88, 166, 255, 0.3); */   
    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
    border: 2px solid rgba(102, 126, 234, 0.3);
    border-radius: var(--border-radius);
@@ -298,33 +214,12 @@ body {
 }
 
 
-/* Инструкции за .input-wrapper:
-   - display: flex
-   - gap: var(--spacing-sm)
-*/
-
-/* TODO: Добавете .input-wrapper стилове тук */
 .input-wrapper{
    display: flex;
    gap: var(--spacing-sm);
 }
 
 
-/* Инструкции за .answer-input:
-   - flex: 1
-   - padding: var(--spacing-sm) var(--spacing-md)
-   - font-size: 1.5rem
-   - font-weight: 600
-   - text-align: center
-   - background: rgba(255, 255, 255, 0.05)
-   - border: 2px solid rgba(102, 126, 234, 0.3)
-   - border-radius: var(--border-radius-sm)
-   - color: var(--text-primary)
-   - outline: none
-   - transition: all 0.3s ease
-*/
-
-/* TODO: Добавете .answer-input стилове тук */
 .answer-input{
    flex: 1;
    padding: var(--spacing-sm) var(--spacing-md);
@@ -333,6 +228,9 @@ body {
    text-align: center;
    background: rgba(255, 255, 255, 0.05);
    border: 2px solid rgba(102, 126, 234, 0.3);
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
+   border: 2px solid rgba(88, 166, 255, 0.3); */
+   box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
    border-radius: var(--border-radius-sm);
    color: var(--text-primary);
    outline: none;
@@ -340,57 +238,21 @@ body {
 }
 
 
-/* СЕДМИЦА 10: TODO - Focus ефект за .answer-input
-   .answer-input:focus:
-   - border-color: var(--accent-color)
-   - box-shadow: 0 0 20px rgba(102, 126, 234, 0.4)
-   - transform: scale(1.02)
-*/
-
-/* TODO: Добавете .answer-input:focus стилове тук */
 .answer-input:focus{
    border-color: var(--accent-color);
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
+   box-shadow: 0 0 20px rgba(88, 166, 255, 0.4); */
    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
    transform: scale(1.02);
 }
 
 
-/* Инструкции за .answer-input:disabled:
-   - opacity: 0.5
-   - cursor: not-allowed
-*/
-
-/* TODO: Добавете .answer-input:disabled стилове тук */
 .answer-input:disabled{
    opacity: 0.5;
    cursor: not-allowed;
 }
 
 
-
-/* ============================================
-   СЕДМИЦА 3: TODO - БУТОНИ
-   ============================================
-*/
-
-/* Инструкции за .submit-btn:
-   - padding: var(--spacing-sm) var(--spacing-md)
-   - background: var(--primary-gradient)
-   - border: none
-   - border-radius: var(--border-radius-sm)
-   - color: white
-   - font-size: 1rem
-   - font-weight: 600
-   - cursor: pointer
-   - display: flex
-   - align-items: center
-   - gap: var(--spacing-xs)
-   - transition: all 0.3s ease
-   - min-width: 140px
-   - justify-content: center
-*/
-
-/* TODO: Добавете .submit-btn стилове тук */
 .submit-btn{
    padding: var(--spacing-sm) var(--spacing-md);
    background: var(--primary-gradient);
@@ -409,50 +271,18 @@ body {
 }
 
 
-/* СЕДМИЦА 10: TODO - Hover ефект за .submit-btn
-   .submit-btn:hover:not(:disabled):
-   - transform: translateY(-3px)
-   - box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6)
-*/
-
-/* TODO: Добавете .submit-btn:hover стилове тук */
 .submit-btn:hover{
    transform: translateY(-3px);
    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
 }
 
 
-/* Инструкции за .submit-btn:disabled:
-   - opacity: 0.5
-   - cursor: not-allowed
-*/
-
-/* TODO: Добавете .submit-btn:disabled стилове тук */
 .submit-btn:disabled{
    opacity: 0.5;
    cursor: not-allowed;
 }
 
 
-
-/* ============================================
-   СЕДМИЦА 10: TODO - FEEDBACK ЗОНА
-   ============================================
-*/
-
-/* Инструкции за .feedback-zone:
-   - min-height: 60px
-   - display: flex
-   - align-items: center
-   - justify-content: center
-   - font-size: 1.3rem
-   - font-weight: 600
-   - margin-bottom: var(--spacing-md)
-   - border-radius: var(--border-radius-sm)
-   - padding: var(--spacing-sm)
-*/
-
-/* TODO: Добавете .feedback-zone стилове тук */
 .feedback-zone{
    min-height: 60px;
    display: flex;
@@ -466,39 +296,28 @@ body {
 }
 
 
-/* Инструкции за .correct-feedback:
-   - color: #38ef7d
-   - background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%)
-   - animation: celebrateCorrect 0.6s ease
-*/
-
-/* TODO: Добавете .correct-feedback стилове тук */
 .correct-feedback{
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
+    color: #00f260; 
+    background: linear-gradient(135deg, rgba(0, 242, 96, 0.2) 0%, rgba(5, 117, 230, 0.2) 100%);
+    animation: celebrateCorrect 0.6s ease; */
    color: #38ef7d;
    background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%);
    animation: celebrateCorrect 0.6s ease;
 }
 
 
-/* Инструкции за .wrong-feedback:
-   - color: #f5576c
-   - background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%)
-   - animation: shakeWrong 0.6s ease
-*/
-
-/* TODO: Добавете .wrong-feedback стилове тук */
 .wrong-feedback{
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ 
+   color: #ff5e62; 
+    background: linear-gradient(135deg, rgba(255, 153, 102, 0.2) 0%, rgba(255, 94, 98, 0.2) 100%);
+    animation: shakeWrong 0.6s ease; */
    color: #f5576c;
    background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%);
    animation: shakeWrong 0.6s ease;
 }
 
 
-/* TODO: Добавете @keyframes celebrateCorrect
-   0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
-   50% { transform: scale(1.2) rotate(5deg); }
-   100% { transform: scale(1) rotate(0deg); opacity: 1; }
-*/
 @keyframes celebrateCorrect{
    0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
    50% { transform: scale(1.2) rotate(5deg); }
@@ -506,11 +325,6 @@ body {
 }
 
 
-/* TODO: Добавете @keyframes shakeWrong
-   0%, 100% { transform: translateX(0); }
-   10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-   20%, 40%, 60%, 80% { transform: translateX(10px); }
-*/
 @keyframes shakeWrong{
    0%, 100% { transform: translateX(0); }
    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
@@ -518,19 +332,6 @@ body {
 }
 
 
-/* ============================================
-   СЕДМИЦА 3: TODO - КОНТРОЛНИ БУТОНИ
-   ============================================
-*/
-
-/* Инструкции за .controls-section:
-   - display: flex
-   - gap: var(--spacing-sm)
-   - justify-content: center
-   - flex-wrap: wrap
-*/
-
-/* TODO: Добавете .controls-section стилове тук */
 .controls-section{
    display: flex;
    gap: var(--spacing-sm);
@@ -541,22 +342,6 @@ body {
 }
 
 
-/* Инструкции за .control-btn:
-   - padding: var(--spacing-sm) var(--spacing-md)
-   - border: none
-   - border-radius: var(--border-radius-sm)
-   - font-size: 1rem
-   - font-weight: 600
-   - cursor: pointer
-   - display: flex
-   - align-items: center
-   - gap: var(--spacing-xs)
-   - transition: all 0.3s ease
-   - min-width: 140px
-   - justify-content: center
-*/
-
-/* TODO: Добавете .control-btn стилове тук */
 .control-btn{
    padding: var(--spacing-sm) var(--spacing-md);
    border: none;
@@ -579,37 +364,18 @@ body {
 }
 
 
-
-/* Инструкции за .start-btn:
-   - background: var(--success-gradient)
-   - color: white
-*/
-
-/* TODO: Добавете .start-btn стилове тук */
 .start-btn{
    background: var(--success-gradient);
    color: white;
 }
 
 
-/* Инструкции за .pause-btn:
-   - background: var(--warning-gradient)
-   - color: white
-*/
-
-/* TODO: Добавете .pause-btn стилове тук */
 .pause-btn{
    background: var(--warning-gradient);
    color: white;
 }
 
 
-/* Инструкции за .new-btn:
-   - background: var(--primary-gradient)
-   - color: white
-*/
-
-/* TODO: Добавете .new-btn стилове тук */
 
 .new-btn{
    background: var(--primary-gradient);
@@ -617,47 +383,22 @@ body {
 }
 
 
-/* ============================================
-   СЕДМИЦА 11: TODO - СТАТИСТИКИ СЕКЦИЯ
-   ============================================
-*/
-
-/* Инструкции за .stats-section:
-   - margin-top: var(--spacing-lg)
-   - padding: var(--spacing-md)
-   - background: rgba(102, 126, 234, 0.1)
-   - border-radius: var(--border-radius)
-   - border: 1px solid rgba(102, 126, 234, 0.3)
-*/
-
-/* TODO: Добавете .stats-section стилове тук */
 .stats-section{
    margin-top: var(--spacing-lg);
    padding: var(--spacing-md);
+   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
+   background: rgba(88, 166, 255, 0.1);
+   border: 1px solid rgba(88, 166, 255, 0.3); */
    background: rgba(102, 126, 234, 0.1);
-   border-radius: var(--border-radius);
    border: 1px solid rgba(102, 126, 234, 0.3);
+   border-radius: var(--border-radius);
 }
 
 
-/* Инструкции за .hidden:
-   - display: none
-*/
-
-/* TODO: Добавете .hidden стилове тук */
 .hidden{
    display: none;
 }
 
-
-/* Инструкции за .stats-grid:
-   - display: grid
-   - grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-   - gap: var(--spacing-sm)
-   - margin-top: var(--spacing-md)
-*/
-
-/* TODO: Добавете .stats-grid стилове тук */
 .stats-grid{
    display:grid;
    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -666,15 +407,6 @@ body {
 }
 
 
-/* Инструкции за .result-card:
-   - background: rgba(255, 255, 255, 0.05)
-   - padding: var(--spacing-md)
-   - border-radius: var(--border-radius-sm)
-   - text-align: center
-   - border: 1px solid rgba(255, 255, 255, 0.1)
-*/
-
-/* TODO: Добавете .result-card стилове тук */
 .result-card{
    background: rgba(255, 255, 255, 0.05);
    padding: var(--spacing-md);
@@ -684,12 +416,6 @@ body {
 }
 
 
-/* Инструкции за .result-card.gold:
-   - background: var(--gold-gradient)
-   - border-color: #ffd200
-*/
-
-/* TODO: Добавете .result-card.gold стилове тук */
 .result-card.gold{
    background: var(--gold-gradient);
    border-color: #ffd200;
@@ -702,26 +428,6 @@ footer {
 }
 
 
-
-/* ============================================
-   СЕДМИЦА 10: TODO - RESPONSIVE ДИЗАЙН
-   ============================================
-*/
-
-/* Инструкции за @media (max-width: 768px):
-   
-   .game-container:
-   - padding: var(--spacing-md)
-   
-   .question-text:
-   - font-size: clamp(1.5rem, 5vw, 2rem)
-   
-   .stat-card:
-   - flex-direction: column
-   - text-align: center
-*/
-
-/* TODO: Добавете media query тук */
 @media (max-width: 768px) {
    .game-container 
    {

@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Battle Arena - Математическа Игра</title>
-    <link rel="stylesheet" href="styles.css">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Battle Arena - Математическа Игра</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <div class="background-animation"></div>
+  <div class="background-animation"></div>
 
-    <div class="game-container">
-         <header class="game-header">
-  <div class="logo-container">
-    <div class="logo-icon">🎯</div>
-    <h1 class="game-title">Math Battle Arena</h1>
-  </div>
-</header>
-       <div class="stats-bar">
-  <div class="stat-card">
-    <div class="stat-icon">⭐</div>
-    <div class="stat-content">
-      <span class="stat-label">Точки</span>
-      <span class="stat-value" id="score-display">0</span>
+  <div class="game-container">
+    <header class="game-header">
+      <div class="logo-container">
+        <div class="logo-icon">🎯</div>
+        <h1 class="game-title">Math Battle Arena</h1>
+      </div>
+    </header>
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-content">
+          <span class="stat-label">Точки</span>
+          <span class="stat-value" id="score-display">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div class="stat-content">
+          <span class="stat-label">Време</span>
+          <span class="stat-value" id="timer-display">60s</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🚀</div>
+        <div class="stat-content">
+          <span class="stat-label">Ниво</span>
+          <span class="stat-value" id="level-display">1</span>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="stat-card">
-    <div class="stat-icon">⏱️</div>
-    <div class="stat-content">
-      <span class="stat-label">Време</span>
-      <span class="stat-value" id="timer-display">60s</span>
-    </div>
-  </div>
+    <main class="game-main">
 
-  <div class="stat-card">
-    <div class="stat-icon">🚀</div>
-    <div class="stat-content">
-      <span class="stat-label">Ниво</span>
-      <span class="stat-value" id="level-display">1</span>
-    </div>
-  </div>
-</div>
-  
-        <main class="game-main">
-            
-            <div class="question-card">
-  <div class="question-badge">Математическо предизвикателство</div>
-  <div class="question-content">
-    <div id="question-display" class="question-text">
-      Натисни 'Старт' за да започнеш! 🎮
-    </div>
-  </div>
-</div>
+      <div class="question-card">
+        <div class="question-badge">Математическо предизвикателство</div>
+        <div class="question-content">
+          <div id="question-display" class="question-text">
+            Натисни 'Старт' за да започнеш! 🎮
+          </div>
+        </div>
+      </div>
 
-            <div class="answer-section">
-  <div class="input-wrapper">
-    <input type="number" id="answer-input" class="answer-input" placeholder="Твоят отговор...">
-<button id="submit-answer" class="submit-btn">
-  <span class="btn-icon">✓</span>
-  <span class="btn-text">Провери</span>
-</button>
+      <div class="answer-section">
+        <div class="input-wrapper">
+          <input type="number" id="answer-input" class="answer-input" placeholder="Твоят отговор...">
+          <button id="submit-answer" class="submit-btn">
+            <span class="btn-icon">✓</span>
+            <span class="btn-text">Провери</span>
+          </button>
 
-  </div>
-</div>
+        </div>
+      </div>
 
-<div id="feedback-display" class="feedback-zone"></div>
+      <div id="feedback-display" class="feedback-zone"></div>
 
-          <div class="controls-section">
-  <button id="start-game" class="control-btn start-btn">
-    <span class="btn-icon">🚀</span>
-    <span class="btn-text">Старт</span>
-  </button>
+      <div class="controls-section">
+        <button id="start-game" class="control-btn start-btn">
+          <span class="btn-icon">🚀</span>
+          <span class="btn-text">Старт</span>
+        </button>
 
-  <button id="pause-game" class="control-btn pause-btn">
-    <span class="btn-icon">⏸️</span>
-    <span class="btn-text">Пауза</span>
-  </button>
+        <button id="pause-game" class="control-btn pause-btn">
+          <span class="btn-icon">⏸️</span>
+          <span class="btn-text">Пауза</span>
+        </button>
 
-  <button id="new-game" class="control-btn new-btn">
-    <span class="btn-icon">🔄</span>
-    <span class="btn-text">Нова игра</span>
-  </button>
-</div>
-      </main>
+        <button id="new-game" class="control-btn new-btn">
+          <span class="btn-icon">🔄</span>
+          <span class="btn-text">Нова игра</span>
+        </button>
+      </div>
+    </main>
 
 
-      <!-- 
+    <!-- 
         ============================================
         СЕДМИЦА 11: TODO - СТАТИСТИКИ ПАНЕЛ
         ============================================
@@ -103,65 +105,66 @@
              * Карта 3: icon 🎯, title "Точност", id="accuracy"
              * Карта 4: icon 🏆, class="result-card gold", title "Рекорд", id="high-score"
         -->
-        
-        <!-- TODO: Добавете stats-section тук -->
-      <section id="stats-section" class="stats-section hidden">
-  <div class="stats-header">
-    <h2>📊 Твоите резултати</h2>
-  </div>
-  <div class="stats-grid">
-    <div class="result-card">
-      <div class="result-icon">📝</div>
-      <div class="result-content">
-        <span class="result-title">Общо въпроси</span>
-        <span class="result-value" id="total-questions">0</span>
+
+    <!-- TODO: Добавете stats-section тук -->
+    <section id="stats-section" class="stats-section hidden">
+      <div class="stats-header">
+        <h2>📊 Твоите резултати</h2>
       </div>
-    </div>
-
-    <div class="result-card">
-      <div class="result-icon">✅</div>
-      <div class="result-content">
-        <span class="result-title">Правилни</span>
-        <span class="result-value" id="correct-answers">0</span>
-      </div>
-    </div>
-
-    <div class="result-card">
-      <div class="result-icon">🎯</div>
-      <div class="result-content">
-        <span class="result-title">Точност</span>
-        <span class="result-value" id="accuracy">0%</span>
-      </div>
-    </div>
-
-    <div class="result-card gold">
-      <div class="result-icon">🏆</div>
-      <div class="result-content">
-        <span class="result-title">Рекорд</span>
-        <span class="result-value" id="high-score">0</span>
-      </div>
-    </div>
-  </div>
-
-       </section>
-  
-        <footer class="game-footer">
-            <p>Направено с ❤️ за обучение по програмиране</p>
-        </footer>
-    </div>
-
-    <div id="custom-modal" class="modal-overlay hidden">
-    <div class="modal-content">
-        <div id="modal-icon" class="modal-icon">⚠️</div>
-        <h2 id="modal-title">Заглавие</h2>
-        <p id="modal-message">Съобщение към играча...</p>
-        <div class="modal-actions">
-            <button id="modal-cancel" class="control-btn pause-btn">Отказ</button>
-            <button id="modal-confirm" class="control-btn start-btn">Потвърди</button>
+      <div class="stats-grid">
+        <div class="result-card">
+          <div class="result-icon">📝</div>
+          <div class="result-content">
+            <span class="result-title">Общо въпроси</span>
+            <span class="result-value" id="total-questions">0</span>
+          </div>
         </div>
-    </div>
-</div>
 
-    <script src="game.js"></script>
+        <div class="result-card">
+          <div class="result-icon">✅</div>
+          <div class="result-content">
+            <span class="result-title">Правилни</span>
+            <span class="result-value" id="correct-answers">0</span>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-icon">🎯</div>
+          <div class="result-content">
+            <span class="result-title">Точност</span>
+            <span class="result-value" id="accuracy">0%</span>
+          </div>
+        </div>
+
+        <div class="result-card gold">
+          <div class="result-icon">🏆</div>
+          <div class="result-content">
+            <span class="result-title">Рекорд</span>
+            <span class="result-value" id="high-score">0</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="game-footer">
+      <p>Направено с ❤️ за обучение по програмиране</p>
+    </footer>
+  </div>
+
+  <div id="custom-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div id="modal-icon" class="modal-icon">⚠️</div>
+      <h2 id="modal-title">Заглавие</h2>
+      <p id="modal-message">Съобщение към играча...</p>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="control-btn pause-btn">Отказ</button>
+        <button id="modal-confirm" class="control-btn start-btn">Потвърди</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
 </body>
+
 </html>

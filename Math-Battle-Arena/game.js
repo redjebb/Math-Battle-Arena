@@ -106,6 +106,8 @@ function stopGameTimer() {
 function generateMathQuestion() {
     console.log("🧮 Генерирам нов въпрос...");
 
+    questionsAnswered++;
+
     const operations = ['addition', 'subtraction', 'multiplication'];
     const randomIndex = Math.floor(Math.random() * 3);
     const operation = operations[randomIndex];
@@ -167,6 +169,10 @@ function generateMathQuestion() {
 }
 
 function checkAnswer() {
+    if(!gameActive || gamePaused){
+        return;
+    }
+    
     let input = answerInput.value;
     let userAnswer = Number(input);
     

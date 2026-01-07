@@ -1,8 +1,6 @@
 :root {
     /* Цветови градиенти */
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ГЛОБАЛНИТЕ ЦВЕТОВЕ
-    --primary-gradient: linear-gradient(135deg, #00b4db 0%, #0083b0 100%); */
+    --primary-gradient: linear-gradient(135deg, #00b4db 0%, #0083b0 100%); 
     --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
     --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
@@ -12,17 +10,13 @@
     --card-bg: #1a1a2e;
     --text-primary: #ffffff;
     --text-secondary: #a0a0b8;
-    /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ГЛОБАЛНИТЕ ЦВЕТОВЕ
-    --аccent-color: #58a6ff; */
-    --accent-color: #667eea;
+    --аccent-color: #58a6ff; 
     
     /* Сенки */
     --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
-    /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ГЛОБАЛНИТЕ ЦВЕТОВЕ
-    --shadow-glow: 0 0 40px rgba(88, 166, 255, 0.3); */
-    --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.4);
+    --shadow-glow: 0 0 40px rgba(88, 166, 255, 0.3); 
     
     /* Размери */
     --border-radius: 20px;
@@ -60,9 +54,7 @@ body {
    width: 100%;
    height: 100%;
    z-index: -1;
-   background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #667eea 75%, #764ba2 100%);
-   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ФОНА 
-   background: linear-gradient(135deg, #00b4db 0%, #0575e6 25%, #58a6ff 50%, #00b4db 75%, #0575e6 100%); */
+   background: linear-gradient(135deg, #00b4db 0%, #0575e6 25%, #58a6ff 50%, #00b4db 75%, #0575e6 100%); 
    background-size: 400% 400%;
    animation: gradientShift 15s ease infinite;
    opacity: 0.1;
@@ -132,11 +124,8 @@ body {
 }
 
 .stat-card{
-   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
    background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(0, 131, 176, 0.1) 100%);
-   border: 1px solid rgba(88, 166, 255, 0.3); */
-   background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-   border: 1px solid rgba(102, 126, 234, 0.3);
+   border: 1px solid rgba(88, 166, 255, 0.3);
    border-radius: var(--border-radius-sm);
    padding: var(--spacing-sm);
    display: flex;
@@ -180,11 +169,8 @@ body {
 }
 
 .question-card{
-   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
    background: linear-gradient(135deg, rgba(88, 166, 255, 0.15) 0%, rgba(0, 131, 176, 0.15) 100%);
-   border: 2px solid rgba(88, 166, 255, 0.3); */   
-   background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-   border: 2px solid rgba(102, 126, 234, 0.3);
+   border: 2px solid rgba(88, 166, 255, 0.3);  
    border-radius: var(--border-radius);
    padding: var(--spacing-lg);
    margin-bottom: var(--spacing-md);
@@ -227,9 +213,7 @@ body {
    font-weight: 600;
    text-align: center;
    background: rgba(255, 255, 255, 0.05);
-   border: 2px solid rgba(102, 126, 234, 0.3);
-   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
-   border: 2px solid rgba(88, 166, 255, 0.3); */
+   border: 2px solid rgba(88, 166, 255, 0.3); 
    box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
    border-radius: var(--border-radius-sm);
    color: var(--text-primary);
@@ -240,9 +224,7 @@ body {
 
 .answer-input:focus{
    border-color: var(--accent-color);
-   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
-   box-shadow: 0 0 20px rgba(88, 166, 255, 0.4); */
-   box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+   box-shadow: 0 0 20px rgba(88, 166, 255, 0.4); 
    transform: scale(1.02);
 }
 
@@ -297,24 +279,16 @@ body {
 
 
 .correct-feedback{
-   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ
     color: #00f260; 
     background: linear-gradient(135deg, rgba(0, 242, 96, 0.2) 0%, rgba(5, 117, 230, 0.2) 100%);
-    animation: celebrateCorrect 0.6s ease; */
-   color: #38ef7d;
-   background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%);
-   animation: celebrateCorrect 0.6s ease;
+    animation: celebrateCorrect 0.6s ease; 
 }
 
 
-.wrong-feedback{
-   /* ЗАДАЧА ЗА ГАБИ - ПРОМЯНА НА ЦВЕТОВЕТЕ 
+.wrong-feedback{ 
    color: #ff5e62; 
     background: linear-gradient(135deg, rgba(255, 153, 102, 0.2) 0%, rgba(255, 94, 98, 0.2) 100%);
-    animation: shakeWrong 0.6s ease; */
-   color: #f5576c;
-   background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%);
-   animation: shakeWrong 0.6s ease;
+    animation: shakeWrong 0.6s ease; 
 }
 
 

@@ -6,21 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Math Battle Arena - Математическа Игра</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Добавен шрифт Poppins от Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <div class="background-animation"></div>
-
   <div class="game-container">
     <header class="game-header">
+      <!-- Header секция - Лого и заглавна страница -->
       <div class="logo-container">
         <div class="logo-icon">🎯</div>
         <h1 class="game-title">Math Battle Arena</h1>
       </div>
     </header>
     <div class="stats-bar">
+      <!-- Статистики бар - Точки, Време, Ниво -->
       <div class="stat-card">
         <div class="stat-icon">⭐</div>
         <div class="stat-content">
@@ -47,7 +49,7 @@
     </div>
 
     <main class="game-main">
-
+<!-- Главна игрална зона - Въпросна карта, Отговорна секция, Feedback зона -->
       <div class="question-card">
         <div class="question-badge">Математическо предизвикателство</div>
         <div class="question-content">
@@ -58,6 +60,7 @@
       </div>
 
       <div class="answer-section">
+        <!-- Отговорна секция -->
         <div class="input-wrapper">
           <input type="number" id="answer-input" class="answer-input" placeholder="Твоят отговор...">
           <button id="submit-answer" class="submit-btn">
@@ -69,8 +72,9 @@
       </div>
 
       <div id="feedback-display" class="feedback-zone"></div>
-
+<!-- Feedback зона -->
       <div class="controls-section">
+        <!-- Контролни бутони - Старта, Паузата, Нова игра -->
         <button id="start-game" class="control-btn start-btn">
           <span class="btn-icon">🚀</span>
           <span class="btn-text">Старт</span>
@@ -88,26 +92,9 @@
       </div>
     </main>
 
-
-    <!-- 
-        ============================================
-        СЕДМИЦА 11: TODO - СТАТИСТИКИ ПАНЕЛ
-        ============================================
-        Инструкции:
-        1. Създайте section с:
-           - id="stats-section"
-           - class="stats-section hidden"
-        2. Вътре създайте:
-           - div class="stats-header" с h2 "📊 Твоите резултати"
-           - div class="stats-grid" с 4 result-card div-а:
-             * Карта 1: icon 📝, title "Общо въпроси", id="total-questions"
-             * Карта 2: icon ✅, title "Правилни", id="correct-answers"
-             * Карта 3: icon 🎯, title "Точност", id="accuracy"
-             * Карта 4: icon 🏆, class="result-card gold", title "Рекорд", id="high-score"
-        -->
-
-    <!-- TODO: Добавете stats-section тук -->
     <section id="stats-section" class="stats-section hidden">
+      <!-- Статистики панел - Общо въпроси, Правилни, Точност, Рекорд -->
+      <div class="stats-header">
       <div class="stats-header">
         <h2>📊 Твоите резултати</h2>
       </div>
@@ -148,11 +135,13 @@
     </section>
 
     <footer class="game-footer">
+      <!-- Footer - Автор и авторски права -->
       <p>Направено с ❤️ за обучение по програмиране</p>
     </footer>
   </div>
 
-  <div id="custom-modal" class="modal-overlay hidden">
+  <div id="custom-modal" class="modal-overlay hidden">\
+    <!-- Панел за модални прозорци -->
     <div class="modal-content">
       <div id="modal-icon" class="modal-icon">⚠️</div>
       <h2 id="modal-title">Заглавие</h2>

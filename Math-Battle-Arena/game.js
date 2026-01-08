@@ -281,7 +281,7 @@ function endGame() {
     
     showCustomModal(
     "🎯 Играта приключи!", 
-    `Точки: ${playerScore}\nОтговори: ${correctAnswers}/${questionsAnswered}`, 
+    `Ниво: ${currentLevel}\nТочки: ${playerScore}\nОтговори: ${correctAnswers}/${questionsAnswered}`, 
     "🏆", 
     "Супер!", 
     false, 

@@ -1,5 +1,6 @@
 console.log("🎮 Math Battle Arena се зарежда...");
 
+/* Дефиниране на глобални променливи за играта */
 let playerScore = 0
 let timeRemaining = 90
 let currentLevel = 1
@@ -12,6 +13,7 @@ let correctAnswer = 0
 
 console.log("✅ Променливите са създадени!");
 
+/* Дефиниране на константи за продължителността на играта и максималното ниво */
 const GAME_DURATION = 60
 const MAX_LEVEL = 10
 
@@ -26,6 +28,7 @@ const LEVEL_CONFIG = [
 
 console.log("⚙️ Константите са заредени!");
 
+/* Дефиниране на DOM елементите за играта */
 const questionDisplay = document.getElementById('question-display');
 const scoreDisplay = document.getElementById('score-display');
 const timerDisplay = document.getElementById('timer-display');
@@ -45,21 +48,26 @@ const modalCancelBtn = document.getElementById('modal-cancel');
 
 console.log("🔗 DOM елементите са свързани!");
 
+/* Дефиниране на променливи за таймера и callback функцията за модалния прозорец */
 let gameTimer = null;
 let modalCallback = null; 
 
+/* Функция за показване на модалния прозорец */
 function showCustomModal(title, message, icon, confirmText, showCancel, onConfirm) {
     modalTitle.textContent = title;
     modalMessage.textContent = message;
     modalIcon.textContent = icon;
     modalConfirmBtn.textContent = confirmText;
     
+    /* Ако е необходимо, показваме бутона за отказ */
     if (showCancel) {
         modalCancelBtn.classList.remove('hidden');
     } else {
+        /* Ако не е необходимо, скриваме бутона за отказ */
         modalCancelBtn.classList.add('hidden');
     }
 
+    /* Показваме модалния прозорец */
     customModal.classList.remove('hidden');
     modalCallback = onConfirm;
 }
@@ -74,10 +82,7 @@ modalCancelBtn.addEventListener('click', () => {
     modalCallback = null;
 });
 
-// ============================================
-// СЕДМИЦА 9: TODO - ТАЙМЕР ФУНКЦИИ (РЕДЖЕБ)
-// ============================================
-
+/* Функция за обновяване на таймера */
 function updateTimer() {
     if (!gamePaused) {
         timeRemaining--;
@@ -86,12 +91,14 @@ function updateTimer() {
     }
 }
 
+/* Функция за стартиране на таймера */
 function startGameTimer() {
     if (!gameTimer) {
         gameTimer = setInterval(updateTimer, 1000);
     }
 }
 
+/* Функция за спиране на таймера */
 function stopGameTimer() {
     if (gameTimer) {
         clearInterval(gameTimer);
@@ -99,23 +106,24 @@ function stopGameTimer() {
     }
 }
 
-// ============================================
-// СЕДМИЦА 7: TODO - ПОМОЩНИ ФУНКЦИИ (РЕДЖЕБ)
-// ============================================
-
+/* Функция за генериране на нов математически въпрос */
 function generateMathQuestion() {
     console.log("🧮 Генерирам нов въпрос...");
 
+    /* Увеличаване броя на зададените въпроси */
     questionsAnswered++;
 
     const operations = ['addition', 'subtraction', 'multiplication'];
+    /* Генериране на случаен оператор */
     const randomIndex = Math.floor(Math.random() * 3);
     const operation = operations[randomIndex];
 
+    /* Дефиниране на променливи за числата и текста на въпроса */
     let num1, num2, answer, questionText;
 
     // Динамични максимални стойности базирани на нивото
     // Базови стойности за Ниво 1
+    /* Дефиниране на максималните стойности за добавяне/изваждане и умножение */
    let maxAddSub = 10 + (currentLevel - 1) * 15;
     let maxMul = 5 + currentLevel * 2;
 
@@ -132,6 +140,7 @@ function generateMathQuestion() {
     if (maxMul > 50) maxMul = 50;
     //  КРАЙ НА НОВОТО
 
+    /* Генериране на нов математически въпрос */
     switch (operation) {
         case 'addition':
             // Числа в обхвата [1, maxAddSub]
@@ -168,14 +177,19 @@ function generateMathQuestion() {
     console.log(`✅ Нов въпрос (Ниво ${currentLevel}): ${currentQuestion}. Обхват: ${maxAddSub}/${maxMul}`);
 }
 
+/* Функция за проверка на отговора на играча */
 function checkAnswer() {
+    /* Проверка дали играта е активна и не е на пауза */
     if(!gameActive || gamePaused){
+        /* Ако не е активна или на пауза, връщаме се назад */
         return;
     }
     
+    /* Дефиниране на променливи за входния отговор и преобразуването му в число */
     let input = answerInput.value;
     let userAnswer = Number(input);
     
+    /* Проверка дали отговорът на играча е верен */
     if (userAnswer === correctAnswer) {
         const levelPoints = 10 + (currentLevel - 1) * 5;
         playerScore += levelPoints;
@@ -204,6 +218,7 @@ function checkAnswer() {
     }, 1200); 
 }
 
+/* Функция за показване на фийдбек */
 function showFeedback(message, type) {
     feedbackDisplay.textContent = message
     
@@ -219,16 +234,14 @@ function showFeedback(message, type) {
     }, 2000);
 }
 
+/* Функция за обновяване на дисплея */
 function updateDisplay() {
     scoreDisplay.textContent = playerScore
     levelDisplay.textContent = currentLevel
     timerDisplay.textContent = timeRemaining + "s"
 }
 
-// ============================================
-// СЕДМИЦА 9: TODO - ГЛАВНИ ИГРОВИ ФУНКЦИИ (РЕДЖЕБ)
-// ============================================
-
+/* Функция за стартиране на играта */
 function startGame() {
     console.log("🚀 Стартиране на нова игра...");
     
@@ -254,6 +267,7 @@ function startGame() {
     console.log("✅ Играта започна!");
 }
 
+/* Функция за приключване на играта */
 function endGame() {
     console.log("🏁 Играта приключва...");
     
@@ -275,6 +289,7 @@ function endGame() {
 );
 }
 
+/* Функция за рестартиране на играта */
 function resetGame() {
     console.log("🔄 Рестартиране...");
     
@@ -300,15 +315,13 @@ function resetGame() {
     console.log("✅ Играта е рестартирана!");
 }
 
-// ============================================
-// СЕДМИЦА 7: TODO - LOCALSTORAGE ФУНКЦИИ
-// ============================================
-
+/* Функция за запазване на рекорда */
 function saveHighScore() {
     try {
         const savedHighScore = localStorage.getItem('mathGameHighScore');
         const currentHighScore = savedHighScore ? parseInt(savedHighScore) : 0;
         
+        /* Проверка дали текущият резултат е по-голям от текущият рекорд */
         if (playerScore > currentHighScore) {
             localStorage.setItem('mathGameHighScore', playerScore.toString());
             return true;
@@ -321,11 +334,14 @@ function saveHighScore() {
     }
 }
 
+/* Функция за зареждане на рекорда */
 function loadHighScore() {
     try {
         const savedHighScore = localStorage.getItem('mathGameHighScore');
         
+        /* Проверка дали има SavedHighScore */
         if (savedHighScore) {
+            /* Превръщаме SavedHighScore в число */
             const score = parseInt(savedHighScore);
             return score;
         } else {
@@ -341,10 +357,7 @@ loadHighScore();
 
 console.log("✅ LocalStorage функциите са готови!");
 
-// ============================================
-// СЕДМИЦА 8: TODO - EVENT LISTENERS (РЕДЖЕБ)
-// ============================================
-
+/* Добавяне на event listeners за бутоните */
 startButton.addEventListener('click', function() {
     if (!gameActive) startGame();
 });
@@ -396,10 +409,7 @@ newGameButton.addEventListener('click', function() {
 
 console.log("✅ Event listeners са настроени!");
 
-// ============================================
-// СЕДМИЦА 12: TODO - АЛГОРИТЪМ ЗА НИВАТА
-// ============================================
-
+/* Функция за алгоритъм на нивата */
 function checkLevelUp() {
     // Търсим следващото ниво
     const nextLevelConfig = LEVEL_CONFIG.find(config => config.level === currentLevel + 1);
@@ -426,15 +436,10 @@ function checkLevelUp() {
     }
 }
 
-// ============================================
-// ФИНАЛНА ИНИЦИАЛИЗАЦИЯ
-// ============================================
-
+/* Добавяне на event listener за зареждането на страницата */
 window.addEventListener('load', function() {
     console.log("🎮 Math Battle Arena е заредена!");
     console.log("📚 Готови сте да започнете!");
     console.log("💡 Проверете TODO коментарите и започнете да програмирате!");
 });
-
-console.log("🎉 Скелетът е готов за попълване!");
   

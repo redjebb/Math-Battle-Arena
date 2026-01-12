@@ -90,6 +90,12 @@
           <span class="btn-text">Нова игра</span>
         </button>
       </div>
+
+      <div class="demo-section" style="margin-top: 20px; text-align: center;">
+    <button id="start-demo" class="control-btn new-btn" style="width: 100%; margin-top: 15px; background: var(--gold-gradient);">
+    🎮 Стартирай демо игра
+</button>
+</div>
     </main>
 
     <section id="stats-section" class="stats-section hidden">
@@ -141,17 +147,23 @@
   </div>
 
   <div id="custom-modal" class="modal-overlay hidden">
-    <!-- Панел за модални прозорци -->
-    <div class="modal-content">
-      <div id="modal-icon" class="modal-icon">⚠️</div>
-      <h2 id="modal-title">Заглавие</h2>
-      <p id="modal-message">Съобщение към играча...</p>
-      <div class="modal-actions">
-        <button id="modal-cancel" class="control-btn pause-btn">Отказ</button>
-        <button id="modal-confirm" class="control-btn start-btn">Потвърди</button>
-      </div>
+    <div class="modal-content demo-mode-adjust"> <div id="modal-icon" class="modal-icon">⚠️</div>
+        <h2 id="modal-title">Заглавие</h2>
+        
+        <div id="demo-feedback" class="demo-feedback-style hidden"></div>
+        
+        <p id="modal-message">Съобщение...</p>
+        
+        <div class="modal-input-container">
+            <input type="number" id="modal-input" class="answer-input hidden" placeholder="Твоят отговор...">
+        </div>
+
+        <div class="modal-actions">
+            <button id="modal-cancel" class="control-btn pause-btn">Отказ</button>
+            <button id="modal-confirm" class="control-btn start-btn">Потвърди</button>
+        </div>
     </div>
-  </div>
+</div>
 
   <script src="game.js"></script>
 </body>

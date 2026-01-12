@@ -4,7 +4,7 @@
     --primary-gradient: linear-gradient(135deg, #00b4db 0%, #0083b0 100%); 
     --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
     --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+    --gold-gradient: linear-gradient(135deg, #f7971e 0%, #d3ae06 100%);
     
     /* Основни цветове */
     --bg-color: #0f0f23;
@@ -440,6 +440,27 @@ footer {
     text-align: center;
     margin-top: var(--spacing-lg);
     font-size: 0.9rem;
+}
+
+/* Пространство за полето в модала */
+.modal-input-container {
+    margin: 20px 0;
+}
+
+/* Стил за съобщенията ВЪТРЕ в модала */
+.demo-feedback-style {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    animation: modalPop 0.3s ease;
+}
+
+/* Специален клас, когато сме в демо режим, за да не е на целия екран */
+.demo-mode-adjust {
+    max-width: 450px !important;
+    border: 2px solid var(--аccent-color);
+    box-shadow: 0 0 30px rgba(88, 166, 255, 0.5);
 }
 
 /* Оптимизация на интерфейса за мобилни телефони и таблети */

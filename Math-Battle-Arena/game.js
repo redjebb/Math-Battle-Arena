@@ -53,21 +53,34 @@ let gameTimer = null;
 let modalCallback = null; 
 
 /* Функция за показване на модалния прозорец */
-function showCustomModal(title, message, icon, confirmText, showCancel, onConfirm) {
+function showCustomModal(title, message, icon, confirmText, showCancel, onConfirm, isDemo = false) {
+    // 1. Попълваме текста
     modalTitle.textContent = title;
     modalMessage.textContent = message;
     modalIcon.textContent = icon;
     modalConfirmBtn.textContent = confirmText;
     
-    /* Ако е необходимо, показваме бутона за отказ */
+    // 2. Управление на полето за писане и фийдбека
+    const modalInput = document.getElementById('modal-input');
+    const demoFeedback = document.getElementById('demo-feedback');
+
+    if (isDemo) {
+        modalInput.classList.remove('hidden');
+        demoFeedback.classList.add('hidden'); // Скриваме стария фийдбек
+        modalInput.value = ""; // Чистим полето
+        setTimeout(() => modalInput.focus(), 100); // Автоматичен фокус
+    } else {
+        modalInput.classList.add('hidden');
+        demoFeedback.classList.add('hidden');
+    }
+
+    // 3. Показваме/скриваме бутона за отказ
     if (showCancel) {
         modalCancelBtn.classList.remove('hidden');
     } else {
-        /* Ако не е необходимо, скриваме бутона за отказ */
         modalCancelBtn.classList.add('hidden');
     }
 
-    /* Показваме модалния прозорец */
     customModal.classList.remove('hidden');
     modalCallback = onConfirm;
 }
@@ -434,6 +447,139 @@ function checkLevelUp() {
         
         console.log(`✅ Преминато на ниво ${currentLevel}. Точки: ${playerScore}, Време: ${nextLevelConfig.timeBonus}s`);
     }
+}
+
+/* ============================================================
+   ФИНАЛЕН БОНУС МОДУЛ: ПРОФЕСИОНАЛНО ДЕМО
+   ============================================================ */
+let currentDemoAnswer = 0;
+// Променливи за демото
+let demoQuestionCount = 0;
+let demoCorrectAnswers = 0;
+
+document.getElementById('start-demo').addEventListener('click', function() {
+    demoQuestionCount = 0;
+    demoCorrectAnswers = 0;
+    showNextDemoQuestion(); // Стартираме първия въпрос
+});
+
+// Слушател за ENTER клавиш в модалното поле
+document.getElementById('modal-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        submitDemoAnswer();
+    }
+});
+
+/* Генериране на балансирани задачи със скоби (Демо) */
+function generateBracketQuestion() {
+    // Множител извън скобите (4 до 12) - не е твърде голям, но не е и 2 или 3
+    const a = Math.floor(Math.random() * 9) + 4; 
+    
+    // Числа вътре в скобите (сборът им ще е между 12 и 25)
+    const b = Math.floor(Math.random() * 8) + 6;  // 6 до 13
+    const c = Math.floor(Math.random() * 8) + 6;  // 6 до 13
+    
+    const isFirstBracket = Math.random() > 0.5;
+    let questionText, answer;
+
+    if (isFirstBracket) {
+        // Тип: 7 × (8 + 9)
+        questionText = `${a} × (${b} + ${c})`;
+        answer = a * (b + c);
+    } else {
+        // Тип: (9 + 7) × 8
+        questionText = `(${b} + ${c}) × ${a}`;
+        answer = (b + c) * a;
+    }
+    
+    return { text: questionText, answer: answer };
+}
+
+function showNextDemoQuestion() {
+    // Изчистване на съобщенията от предния въпрос
+    const feedback = document.getElementById('demo-feedback');
+    if (feedback) feedback.classList.add('hidden');
+
+    if (demoQuestionCount < 4) {
+        demoQuestionCount++;
+        const quest = generateBracketQuestion(); 
+        currentDemoAnswer = quest.answer;
+
+        showCustomModal(
+            `Задача ${demoQuestionCount}/4`, // Заглавие без думата "Демо"
+            `Пресметни: ${quest.text}`,
+            "🧠",
+            "Провери",
+            true, 
+            submitDemoAnswer,
+            true 
+        );
+
+        // Настройка на бутона за пропускане
+        modalCancelBtn.textContent = "Пропусни";
+        modalCancelBtn.onclick = function() {
+            modalCallback = null; 
+            customModal.classList.add('hidden');
+            setTimeout(showNextDemoQuestion, 100); 
+        };
+    } else {
+        // Логика за финалното съобщение според резултата
+        let finalTitle = "📊 Резултат";
+        let finalMessage = "";
+        let finalIcon = "🏆";
+
+        if (demoCorrectAnswers === 0) {
+            // Ако няма нито един верен отговор
+            finalTitle = "Упс... 😕";
+            finalMessage = "Ти не реши правилно нито една задача!";
+            finalIcon = "❌";
+        } else {
+            // Ако има поне един верен отговор
+            finalMessage = `Ти реши правилно ${demoCorrectAnswers} от 4 задачи!`;
+            finalIcon = "🏆";
+        }
+
+        showCustomModal(
+            finalTitle,
+            finalMessage,
+            finalIcon, 
+            "Към играта",
+            false,
+            function() {
+                window.location.reload();
+            }
+        );
+        
+        modalConfirmBtn.onclick = function() {
+            window.location.reload();
+        };
+    }
+}
+
+function submitDemoAnswer() {
+    const inputField = document.getElementById('modal-input');
+    const feedback = document.getElementById('demo-feedback');
+    const userVal = parseInt(inputField.value);
+    
+    if (feedback) feedback.classList.remove('hidden');
+    
+    if (!isNaN(userVal) && userVal === currentDemoAnswer) {
+        demoCorrectAnswers++;
+        if (feedback) {
+            feedback.textContent = "✅ Вярно!";
+            feedback.style.color = "#38ef7d";
+        }
+    } else {
+        if (feedback) {
+            feedback.textContent = `❌ Грешно! (Отговор: ${currentDemoAnswer})`;
+            feedback.style.color = "#f5576c";
+        }
+    }
+    
+    inputField.value = ""; // Чистим полето за следващия въпрос
+    
+    // Пауза за показване на резултата преди следващата задача
+    setTimeout(showNextDemoQuestion, 1500);
 }
 
 /* Добавяне на event listener за зареждането на страницата */
